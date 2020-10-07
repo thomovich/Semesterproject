@@ -7,7 +7,7 @@ public class Start {
 
 	public static void main(String[] args) {
 		Application.launch(MyApplication.class);
-		//test nr.4
+		//Hej Frede
 	}
 
 }
