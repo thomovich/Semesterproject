@@ -17,7 +17,7 @@ public class MyApplication extends Application {
 			view.start(primaryStage);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}//hejsa hvordan går det
+		}
 
 	}
 }
