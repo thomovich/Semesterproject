@@ -16,7 +16,7 @@ public class MyApplication extends Application {
 			ViewHandler view = new ViewHandler(viewModelFactory);
 			view.start(primaryStage);
 		} catch (Exception e) {
-			e.printStackTrace();///////rasmus was here
+			e.printStackTrace();//Fremover hvis i har fejl så tjek i har et JRE bound nu ved i alle sammen hvorda man gør ellers google det!
 		}
 
 	}
