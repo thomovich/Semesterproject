@@ -32,7 +32,7 @@ public class Chapter1Controller {
 
     }
 
-    //tets
+    //test
     @FXML
     void secondproblemonaction() {
 
