@@ -10,6 +10,7 @@ public class ViewHandler {
 	private Stage primaryStage;
 	private Scene currentScene;
 	private ViewModelFactory ViewModelFactory;
+	private ChaptersController chapterscontroller;
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
 	private FrontPageController FrontPageController;
@@ -31,6 +32,9 @@ public class ViewHandler {
 		switch (id) {
 		case "Frontpage":
 			root = loadFrontpageView("FrontPage.fxml");
+			break;
+		case "Chapters":
+			root = loadChapters("Chapters.fxml");
 			break;
 		case "Chapter1":
 			root = loadChapter1("Chapter1.fxml");
@@ -74,7 +78,26 @@ public class ViewHandler {
 		}
 		return FrontPageController.getRoot();
 	}
-	
+	//hello
+	//sss
+	private Region loadChapters(String fxmlFile) {
+		Region root = null;
+		if (chapter1controller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				chapterscontroller = loader.getController();
+				chapterscontroller.init(this, ViewModelFactory.getChaptersViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			chapterscontroller.reset();
+		}
+		return chapterscontroller.getRoot();
+	}
 	private Region loadChapter1(String fxmlFile) {
 		Region root = null;
 		if (chapter1controller == null) {

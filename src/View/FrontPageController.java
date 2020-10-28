@@ -32,23 +32,16 @@ public class FrontPageController {
 	@FXML
     private Button submit;
 	
-	@FXML
-    private Button but1;
-
     @FXML
     private TextField textfield;
 
     @FXML
     private ImageView forsideimage;
 
-    @FXML
-    void changeToChapter2(ActionEvent event) {
-    	viewhandler.openView("Chapter2");
-    }
 
     @FXML
-    void changetochapter1(ActionEvent event) {
-    viewhandler.openView("Chapter1");
+    void changetochapter(ActionEvent event) {
+    viewhandler.openView("Chapters");
     }
 
 

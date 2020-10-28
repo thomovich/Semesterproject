@@ -18,7 +18,7 @@ public class MyApplication extends Application {
 			ViewHandler view = new ViewHandler(viewModelFactory);
 			view.start(primaryStage);
 		} catch (Exception e) {
-			e.printStackTrace();//Test
+			e.printStackTrace();//Test2s
 		}
 
 	}
