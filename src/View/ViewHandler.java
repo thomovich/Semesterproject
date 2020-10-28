@@ -78,6 +78,7 @@ public class ViewHandler {
 		}
 		return FrontPageController.getRoot();
 	}
+	//hello
 	private Region loadChapters(String fxmlFile) {
 		Region root = null;
 		if (chapter1controller == null) {
