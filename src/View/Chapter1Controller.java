@@ -29,11 +29,17 @@ public class Chapter1Controller {
 
     @FXML
     void firstproblemonaction() {
-
+    
     }
 
+    //test
     @FXML
     void secondproblemonaction() {
+
+    }
+    
+    @FXML
+    void BacktoChaptersOnAction() {
 
     }
 

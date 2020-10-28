@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="479.0" prefWidth="585.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="View.ChaptersController">
+   <children>
+      <Label layoutX="222.0" layoutY="36.0" text="Chapters">
+         <font>
+            <Font name="Jokerman" size="31.0" />
+         </font>
+      </Label>
+      <Button layoutX="69.0" layoutY="134.0" mnemonicParsing="false" onAction="#changeToChapter1" text="Chapter 1 - Division" />
+      <Button layoutX="69.0" layoutY="262.0" mnemonicParsing="false" onAction="#changeToChapter2" text="Chapter 2 - Calculators" />
+      <Button layoutX="378.0" layoutY="134.0" mnemonicParsing="false" onAction="#changeToChapter4" text="Chaptor 4 - Add" />
+      <Button layoutX="69.0" layoutY="370.0" mnemonicParsing="false" onAction="#changeToChapter3" text="Chapter 3 - Subtraction" />
+      <Button layoutX="378.0" layoutY="262.0" mnemonicParsing="false" onAction="#changeToChapter5" text="Chapter 5 - Multiply" />
+      <Button layoutX="378.0" layoutY="370.0" mnemonicParsing="false" onAction="#changeToFrontPage" text="FrontPage" />
+   </children>
+</AnchorPane>
