@@ -10,3 +10,7 @@
 	-fx-background-color: Blue;
 	
 }
+.root {
+	-fx-background-color:
+		linear-gradient(#55D2F2, #F2BD55);
+		}
