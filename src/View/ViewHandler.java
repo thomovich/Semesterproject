@@ -22,6 +22,7 @@ public class ViewHandler {
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
 		openView("Frontpage");
+		currentScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 
 	public void openView(String id) {
