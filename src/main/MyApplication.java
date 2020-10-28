@@ -6,7 +6,7 @@ import Model.MathModel;
 import Model.ModelManager;
 import View.ViewHandler;
 import ViewModel.ViewModelFactory;
-
+//Halløj
 
 public class MyApplication extends Application {
 	
