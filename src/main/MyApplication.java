@@ -8,6 +8,7 @@ import View.ViewHandler;
 import ViewModel.ViewModelFactory;
 //Halløj
 //Halløj pt. 2
+//Halløj pt. 3
 
 public class MyApplication extends Application {
 	
