@@ -3,6 +3,8 @@ package View;
 import ViewModel.FrontPageViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 
@@ -25,6 +27,11 @@ public class FrontPageController {
 	
 	@FXML
 	private ImageView forsideimage;
+	@FXML
+	private Label submit;
+	@FXML
+	private TextField textfield;
+
 
 	@FXML
 	void ChoosegameOnAction(ActionEvent event) {
