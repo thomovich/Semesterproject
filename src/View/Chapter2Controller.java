@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
@@ -31,26 +32,29 @@ public class Chapter2Controller {
 	}
 
 	@FXML
-	private Label submit1;
-	@FXML
-	private Label submit2;
-	@FXML
-	private Label submit3;
-	@FXML
-	private TextField textfield1;
-	@FXML
-	private TextField textfield2;
-	@FXML
-	private TextField textfield3;
+    private Button submit3;
 
-	@FXML
-	private ImageView firstProblem;
+    @FXML
+    private Button submit2;
 
-	@FXML
-	private ImageView secondproblem;
+    @FXML
+    private Button submit1;
 
-	@FXML
-	private ProgressBar progressbar;
+    @FXML
+    private TextField textfield1;
+
+    @FXML
+    private TextField textfield2;
+
+    @FXML
+    private TextField textfield3;
+
+    @FXML
+    void changeToFrontPage(ActionEvent event) {
+    	viewhandler.openView("Frontpage");
+    }
+
+
 
 	public void init(ViewHandler viewHandler, Chapter2ViewModel chapter2ViewModel, Region root) {
 		this.viewhandler = viewHandler;
@@ -59,10 +63,6 @@ public class Chapter2Controller {
 
 	}
 
-	public void changeToFrontPage(ActionEvent event) throws IOException {
-		viewhandler.openView("Frontpage");
-			
-	}
 	
 	public void reset() {
 	}

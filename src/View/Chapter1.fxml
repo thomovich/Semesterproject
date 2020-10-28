@@ -20,9 +20,5 @@
             <Image url="@../../Images/door.jpg" />
          </image></ImageView>
       <ProgressBar fx:id="progressbar" layoutX="72.0" layoutY="637.0" prefHeight="23.0" prefWidth="1097.0" progress="0.0" />
-      <Label layoutX="64.0" layoutY="48.0" text="Lær at PLUS!" />
-      <Label layoutX="25.0" layoutY="118.0" text="Hvad er: " />
-      <Label layoutX="97.0" layoutY="118.0" text="2 + 10 + 30 = ?" />
-      <TextArea layoutX="228.0" layoutY="110.0" prefHeight="37.0" prefWidth="202.0" />
    </children>
 </AnchorPane>

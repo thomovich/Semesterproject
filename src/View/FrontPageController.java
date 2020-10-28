@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -29,26 +30,28 @@ public class FrontPageController {
 	}
 
 	@FXML
-	private ImageView forsideimage;
+    private Button submit;
+	
 	@FXML
-	private Label submit;
-	@FXML
-	private TextField textfield;
+    private Button but1;
 
-	@FXML
-	void ChoosegameOnAction(ActionEvent event) {
-		viewhandler.openView("Chapter1");
-	}
+    @FXML
+    private TextField textfield;
+
+    @FXML
+    private ImageView forsideimage;
+
+    @FXML
+    void changeToChapter2(ActionEvent event) {
+    	viewhandler.openView("Chapter2");
+    }
+
+
 
 	public void init(ViewHandler viewhandler, FrontPageViewModel ViewModel, Region root) {
 		this.viewhandler = viewhandler;
 		this.ViewModel = ViewModel;
 		this.root = root;
-
-	}
-
-	public void changeToChapter2(ActionEvent event) throws IOException {
-		viewhandler.openView("Chapter2");
 
 	}
 
