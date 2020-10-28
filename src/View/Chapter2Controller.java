@@ -15,7 +15,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
-
 import java.io.IOException;
 
 import View.ViewHandler;
@@ -42,7 +41,7 @@ public class Chapter2Controller {
 	private TextField textfield2;
 	@FXML
 	private TextField textfield3;
-	
+
 	@FXML
 	private ImageView firstProblem;
 
@@ -58,6 +57,7 @@ public class Chapter2Controller {
 		this.root = root;
 
 	}
+
 	public void changeToChapter2(ActionEvent event) throws IOException {
 
 		try {

@@ -11,6 +11,7 @@ public class ViewHandler {
 	private Scene currentScene;
 	private ViewModelFactory ViewModelFactory;
 	private Chapter1Controller chapter1controller;
+	private Chapter2Controller chapter2controller;
 	private FrontPageController FrontPageController;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
@@ -32,6 +33,9 @@ public class ViewHandler {
 			break;
 		case "Chapter1":
 			root = loadChapter1("Chapter1.fxml");
+			break;
+		case "Chapter2":
+			root = loadChapter2("Chapter2.fxml");
 			break;
 		}
 		currentScene.setRoot(root);
@@ -87,6 +91,24 @@ public class ViewHandler {
 			chapter1controller.reset();
 		}
 		return chapter1controller.getRoot();
+	}
+	private Region loadChapter2(String fxmlFile) {
+		Region root = null;
+		if (chapter2controller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				chapter2controller = loader.getController();
+				chapter2controller.init(this, ViewModelFactory.getChapter1ViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			chapter2controller.reset();
+		}
+		return chapter2controller.getRoot();
 	}
 }
 
