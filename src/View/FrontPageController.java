@@ -48,21 +48,7 @@ public class FrontPageController {
 	}
 
 	public void changeToChapter2(ActionEvent event) throws IOException {
-
-		try {
-			FXMLLoader tableViewParent = new FXMLLoader(getClass().getResource("Chapter2.fxml"));
-			Parent root = tableViewParent.load();
-			Scene tableViewScene = new Scene(root);
-			Chapter2Controller Ctc = tableViewParent.<Chapter2Controller>getController();
-
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(tableViewScene);
-			window.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		viewhandler.openView("Chapter2");
 
 	}
 

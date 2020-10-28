@@ -67,7 +67,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Button layoutX="548.0" layoutY="414.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
+      <Button layoutX="548.0" layoutY="414.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
          <font>
             <Font name="Jokerman" size="18.0" />
          </font>

@@ -58,25 +58,11 @@ public class Chapter2Controller {
 
 	}
 
-	public void changeToChapter2(ActionEvent event) throws IOException {
-
-		try {
-			FXMLLoader tableViewParent = new FXMLLoader(getClass().getResource("FrontPage.fxml"));
-			Parent root = tableViewParent.load();
-			Scene tableViewScene = new Scene(root);
-			FrontPageController fpc = tableViewParent.<FrontPageController>getController();
-
-			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			window.setScene(tableViewScene);
-			window.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+	public void changeToFrontPage(ActionEvent event) throws IOException {
+		viewhandler.openView("Frontpage");
+			
 	}
-
+	
 	public void reset() {
 	}
 
