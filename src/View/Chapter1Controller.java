@@ -22,12 +22,10 @@ public class Chapter1Controller {
 
 	@FXML
 	void firstproblemOnMouseEntered(MouseEvent event) {
-
 	}
 
 	@FXML
 	void secondproblemOnMouseEntered(MouseEvent event) {
-
 	}
 
 	@FXML
