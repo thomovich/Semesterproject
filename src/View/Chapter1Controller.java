@@ -21,31 +21,26 @@ public class Chapter1Controller {
 	}
 
 
-	   @FXML
-	    private ProgressBar progressbar;
+    @FXML
+    private Button firsproblem;
 
-	   	@FXML
-	    private Button firstProblem;
+    @FXML
+    private Button secondproblem;
 
-	    @FXML
-	    private Button secondproblem;
+    @FXML
+    void firstproblemonaction() {
 
-	    @FXML
-	    void firstproblemonaction() {
+    }
 
-	    }
+    @FXML
+    void secondproblemonaction() {
 
-	    @FXML
-	    void secondproblemonaction() {
-
-	    }
+    }
 
 	public void init(ViewHandler viewHandler, Chapter1ViewModel chapter1ViewModel, Region root) {
 		this.viewhandler = viewHandler;
 		this.viewModel = chapter1ViewModel;
 		this.root = root;
-		secondproblem.setStyle("-fx-background-image: url('/Images/closed_door.jpg')");
-		firstProblem.setStyle("-fx-background-image: url('/Images/closed_door.jpg')");
 	}
 
 	public void reset() {

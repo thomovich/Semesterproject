@@ -46,6 +46,10 @@ public class FrontPageController {
     	viewhandler.openView("Chapter2");
     }
 
+    @FXML
+    void changetochapter1(ActionEvent event) {
+    viewhandler.openView("Chapter1");
+    }
 
 
 	public void init(ViewHandler viewhandler, FrontPageViewModel ViewModel, Region root) {

@@ -1,3 +1,11 @@
-.firstproblem:hover {
-	-fx-background-image: url('/Images/open_door.jpg');
+.problem {
+	-fx-background-image: url('../Images/closed_door.jpg');
+}
+
+.problem:hover {
+	-fx-background-image: url('../Images/open_door.jpg');
+}
+
+.selector {
+	-fx-background-color: #FFFF00;
 }
