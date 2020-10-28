@@ -14,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import view.ChatWindowController;
+
 
 import java.io.IOException;
 
@@ -58,7 +58,7 @@ public class Chapter2Controller {
 		this.root = root;
 
 	}
-	ublic void changeToChapter2(ActionEvent event) throws IOException {
+	public void changeToChapter2(ActionEvent event) throws IOException {
 
 		try {
 			FXMLLoader tableViewParent = new FXMLLoader(getClass().getResource("FrontPage.fxml"));
