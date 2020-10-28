@@ -1,13 +1,22 @@
 package View;
 
 import ViewModel.Chapter1ViewModel;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
+import view.ChatWindowController;
+
+import java.io.IOException;
 
 import View.ViewHandler;
 import ViewModel.FrontPageViewModel;
@@ -47,6 +56,24 @@ public class Chapter2Controller {
 		this.viewhandler = viewHandler;
 		this.viewModel = chapter1ViewModel;
 		this.root = root;
+
+	}
+	ublic void changeToChapter2(ActionEvent event) throws IOException {
+
+		try {
+			FXMLLoader tableViewParent = new FXMLLoader(getClass().getResource("FrontPage.fxml"));
+			Parent root = tableViewParent.load();
+			Scene tableViewScene = new Scene(root);
+			FrontPageController fpc = tableViewParent.<FrontPageController>getController();
+
+			Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			window.setScene(tableViewScene);
+			window.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 

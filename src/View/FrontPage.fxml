@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #7fff00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.FrontPageController">
    <children>
-      <Button fx:id="submit" layoutX="201.0" layoutY="271.0" mnemonicParsing="false" onAction="#ChoosegameOnAction" text="Submit">
+      <Button fx:id="submit" layoutX="201.0" layoutY="271.0" mnemonicParsing="false" onAction="#ChoosegameOnAction" style="-fx-background-color: #228b22;" text="Submit">
          <font>
             <Font name="Jokerman" size="26.0" />
          </font></Button>
@@ -30,5 +30,10 @@
             <Font name="Jokerman" size="15.0" />
          </font>
       </Label>
+      <Button layoutX="19.0" layoutY="344.0" mnemonicParsing="false" onAction="#changeToChapter2" style="-fx-background-color: #228b22;" text="Chaptor 2 - Regnearter!">
+         <font>
+            <Font name="Jokerman" size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

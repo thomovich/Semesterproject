@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter1Controller">
+<AnchorPane prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter1Controller">
    <children>
-      <ImageView fx:id="firstProblem" fitHeight="247.0" fitWidth="210.0" layoutX="95.0" layoutY="89.0" onMouseEntered="#firstproblemOnMouseEntered" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="firstProblem" fitHeight="247.0" fitWidth="210.0" layoutX="411.0" layoutY="48.0" onMouseEntered="#firstproblemOnMouseEntered" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/door.jpg" />
          </image></ImageView>
-      <ImageView fx:id="secondproblem" fitHeight="217.0" fitWidth="241.0" layoutX="524.0" layoutY="89.0" onMouseEntered="#secondproblemOnMouseEntered" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="secondproblem" fitHeight="217.0" fitWidth="241.0" layoutX="408.0" layoutY="344.0" onMouseEntered="#secondproblemOnMouseEntered" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/door.jpg" />
          </image></ImageView>
-      <ProgressBar fx:id="progressbar" layoutX="95.0" layoutY="634.0" prefHeight="23.0" prefWidth="1097.0" progress="0.0" />
+      <ProgressBar fx:id="progressbar" layoutX="72.0" layoutY="637.0" prefHeight="23.0" prefWidth="1097.0" progress="0.0" />
+      <Label layoutX="64.0" layoutY="48.0" text="Lær at PLUS!" />
+      <Label layoutX="25.0" layoutY="118.0" text="Hvad er: " />
+      <Label layoutX="97.0" layoutY="118.0" text="2 + 10 + 30 = ?" />
+      <TextArea layoutX="228.0" layoutY="110.0" prefHeight="37.0" prefWidth="202.0" />
    </children>
 </AnchorPane>
