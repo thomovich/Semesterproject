@@ -1,6 +1,7 @@
 package View;
 
 import ViewModel.Chapter1ViewModel;
+import ViewModel.Chapter2ViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +23,7 @@ import ViewModel.FrontPageViewModel;
 
 public class Chapter2Controller {
 	private Region root;
-	private Chapter1ViewModel viewModel;
+	private Chapter2ViewModel viewModel;
 	private ViewHandler viewhandler;
 
 	public Chapter2Controller() {
@@ -51,9 +52,9 @@ public class Chapter2Controller {
 	@FXML
 	private ProgressBar progressbar;
 
-	public void init(ViewHandler viewHandler, Chapter1ViewModel chapter1ViewModel, Region root) {
+	public void init(ViewHandler viewHandler, Chapter2ViewModel chapter2ViewModel, Region root) {
 		this.viewhandler = viewHandler;
-		this.viewModel = chapter1ViewModel;
+		this.viewModel = chapter2ViewModel;
 		this.root = root;
 
 	}

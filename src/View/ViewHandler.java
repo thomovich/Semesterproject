@@ -101,7 +101,7 @@ public class ViewHandler {
 				loader.setLocation(getClass().getResource(fxmlFile));
 				root = loader.load();
 				chapter2controller = loader.getController();
-				chapter2controller.init(this, ViewModelFactory.getChapter1ViewModel(), root);
+				chapter2controller.init(this, ViewModelFactory.getChapter2ViewModel(), root);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -7,7 +7,9 @@ import Model.ModelManager;
 import View.ViewHandler;
 import ViewModel.ViewModelFactory;
 
+
 public class MyApplication extends Application {
+	
 	public void start(Stage primaryStage) {
 		MathModel model;
 		try {
