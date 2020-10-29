@@ -1,6 +1,6 @@
 package main;
 
-import main.MyApplication;
+
 import javafx.application.Application;
 
 public class Start {

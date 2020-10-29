@@ -1,12 +1,14 @@
 package ViewModel;
 
 import Model.MathModel;
+import GameViewModel.MayorGameViewModel;
 
 public class ViewModelFactory {
 	 private FrontPageViewModel frontPageViewModel;
 	 private Chapter1ViewModel chapter1viewModel;
 	 private Chapter2ViewModel chapter2viewModel;
 	 private ChaptersViewModel chaptersviewModel;
+	 private MayorGameViewModel MayorGameViewModel;
 
 
 
@@ -15,6 +17,7 @@ public class ViewModelFactory {
 		 chaptersviewModel = new ChaptersViewModel(model);
 		 chapter1viewModel = new Chapter1ViewModel(model);
 		 chapter2viewModel = new Chapter2ViewModel(model);
+		 MayorGameViewModel = new MayorGameViewModel(model);
 
 		}
 	 
@@ -35,4 +38,7 @@ public class ViewModelFactory {
 			
 			return chapter2viewModel;
 		}
+	 public MayorGameViewModel getMayorGameViewModel() {
+		 return MayorGameViewModel;
+	 }
 }

@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import ViewModel.ViewModelFactory;
+import GameView.*;
+import Gamestarter.MayorGame;
 
 public class ViewHandler {
 	private Stage primaryStage;
@@ -14,6 +16,7 @@ public class ViewHandler {
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
 	private FrontPageController FrontPageController;
+	private MayorGameController MayorGameController;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -42,6 +45,8 @@ public class ViewHandler {
 		case "Chapter2":
 			root = loadChapter2("Chapter2.fxml");
 			break;
+		case "Mayorgame": 
+			root = loadMayorGame("../GameView/MayorGame.fxml");
 		}
 		currentScene.setRoot(root);
 		String title = "";
@@ -78,8 +83,7 @@ public class ViewHandler {
 		}
 		return FrontPageController.getRoot();
 	}
-	//hello
-	//sss
+	
 	private Region loadChapters(String fxmlFile) {
 		Region root = null;
 		if (chapter1controller == null) {
@@ -133,6 +137,30 @@ public class ViewHandler {
 			chapter2controller.reset();
 		}
 		return chapter2controller.getRoot();
+	}
+	private Region loadMayorGame(String fxmlFile) {
+
+		Region root = null;
+		if ( MayorGameController== null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				MayorGameController = loader.getController();
+				MayorGameController.init(this, ViewModelFactory.getMayorGameViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			// reset window
+			MayorGameController.reset();
+		}
+		return MayorGameController.getRoot();
+	}
+	public void startmayorgame() throws Exception {
+		MayorGame mayor = new MayorGame();
+		mayor.start(primaryStage);
 	}
 }
 

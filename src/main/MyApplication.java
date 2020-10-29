@@ -6,9 +6,7 @@ import Model.MathModel;
 import Model.ModelManager;
 import View.ViewHandler;
 import ViewModel.ViewModelFactory;
-//Halløj
-//Halløj pt. 2
-//Halløj pt. 3
+
 
 public class MyApplication extends Application {
 	
@@ -20,7 +18,7 @@ public class MyApplication extends Application {
 			ViewHandler view = new ViewHandler(viewModelFactory);
 			view.start(primaryStage);
 		} catch (Exception e) {
-			e.printStackTrace();//Test2s
+			e.printStackTrace();
 		}
 
 	}
