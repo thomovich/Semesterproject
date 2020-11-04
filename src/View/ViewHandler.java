@@ -160,7 +160,7 @@ public class ViewHandler {
 	}
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
-		mayor.start(primaryStage);
+		mayor.start(primaryStage,this);
 	}
 }
 

@@ -19,7 +19,6 @@ public class MayorGameController {
 
 	@FXML
 	void letsgoonaction() throws Exception {
-		letsgo.setVisible(false);
 		viewhandler.startmayorgame();
 		
 	}
