@@ -24,7 +24,7 @@ import View.ViewHandler;
 public class MayorGame {
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 	private ArrayList<Node> platforms = new ArrayList<Node>();
-	private ArrayList<ImageView> coins = new ArrayList<ImageView>();
+	private ArrayList<ImageView> enemies = new ArrayList<ImageView>();
 
 	private Pane appRoot = new Pane();
 	private Pane gameRoot = new Pane();
@@ -61,6 +61,7 @@ public class MayorGame {
 				if (running) {
 					update();
 				}
+				
 				if(dialogEvent) {
 					dialogEvent = false;
 					keys.keySet().forEach(key -> keys.put(key, false));
@@ -116,24 +117,25 @@ public class MayorGame {
 				case '0':
 					break;
 				case '1':
-					Node platform = createEntity(j * 60, i * 60, 60, 60, Color.BROWN);
+					Image stone = new Image("/Images/Stonetexture.jpg");
+					Node platform = createImageEntity(j * 60, i * 60, 60, 60, stone);
 					platforms.add(platform);
 					break;
 				case '2':
 					Image image = new Image("/Images/Robber.png");
-					ImageView coin = createEnemy(j * 60, i * 60, 60, 60, image);
-					coins.add(coin);
+					ImageView robber = createImageEntity(j * 60, i * 60, 60, 60, image);
+					enemies.add(robber);
 					break;
 				}
 			}
 		}
 		Image image = new Image("/Images/tinyplayer-removebg-preview.png");
-		player = createPlayer(0, 600, image);
+		player = createImageEntity(0, 600, 40,40 ,image);
 
 		player.translateXProperty().addListener((obs, old, newValue) -> {
 			int offset = newValue.intValue();
-			if (offset > 640 && offset < levelWidth - 640) {
-				gameRoot.setLayoutX(-(offset - 640));
+			if (offset > 960 && offset < levelWidth - 960) {
+				gameRoot.setLayoutX(-(offset - 960));
 			}
 		});
 
@@ -160,19 +162,19 @@ public class MayorGame {
 		}
 		movePlayery((int) playerVelocity.getY());
 
-		for (Node coin : coins) {
-			if (player.getBoundsInParent().intersects(coin.getBoundsInParent())) {
-				coin.getProperties().put("alive", false);
+		for (Node enemy : enemies) {
+			if (player.getBoundsInParent().intersects(enemy.getBoundsInParent())) {
+				enemy.getProperties().put("alive", false);
 				dialogEvent = true;
 				running = false;
 			}
 		}
 
-		for (Iterator<ImageView> it = coins.iterator(); it.hasNext();) {
-			Node coin = it.next();
-			if (!(Boolean) coin.getProperties().get("alive")) {
+		for (Iterator<ImageView> it = enemies.iterator(); it.hasNext();) {
+			Node enemy = it.next();
+			if (!(Boolean) enemy.getProperties().get("alive")) {
 				it.remove();
-				gameRoot.getChildren().remove(coin);
+				gameRoot.getChildren().remove(enemy);
 			}
 		}
 
@@ -241,7 +243,7 @@ public class MayorGame {
 		return entity;
 	}
 	
-	private ImageView createEnemy(int x, int y, int w, int h, Image image) {
+	private ImageView createImageEntity(int x, int y, int w, int h, Image image) {
 		ImageView enemy = new ImageView();
 		enemy.setFitHeight(h);
 		enemy.setFitWidth(w);
@@ -253,17 +255,7 @@ public class MayorGame {
 		return enemy;
 	}
 
-	private ImageView createPlayer(int x, int y, Image image) {
-		ImageView entity = new ImageView();
-		entity.setFitHeight(40);
-		entity.setFitWidth(40);
-		entity.setImage(image);
-		entity.setTranslateX(x);
-		entity.setTranslateY(y);
-		gameRoot.getChildren().add(entity);
-		return entity;
 
-	}
 
 private void MainMenu() {
 	viewhandler.openView("Chapter1");
