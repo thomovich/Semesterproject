@@ -79,4 +79,7 @@ public class Sprite
         return " Position: [" + positionX + "," + positionY + "]" 
         + " Velocity: [" + velocityX + "," + velocityY + "]";
     }
+    public double getPositiony() {
+    	return positionY;
+    }
 }
