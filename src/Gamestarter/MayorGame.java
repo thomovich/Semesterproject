@@ -18,7 +18,7 @@ public class MayorGame{
 	public boolean jumping = false;
 	
 	public void start(Stage primaryStage) throws Exception {
-		primaryStage.setTitle("Keyboard input");
+		primaryStage.setTitle("Mayor Game");
         
         Group root = new Group();
         Scene theScene = new Scene( root );
@@ -71,6 +71,7 @@ public class MayorGame{
         ground.setPosition(0, 400);
         
         LongValue lastNanoTime = new LongValue( System.nanoTime() );
+        
         new AnimationTimer()
         {
 
