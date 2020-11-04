@@ -1,5 +1,7 @@
 package Model;
 
+import java.sql.Connection;
+
 public interface MathModel {
 
 	public int getScore();
@@ -7,4 +9,6 @@ public interface MathModel {
 	public void setScore(int score);
 
 	public int getValue();
+	
+	public Connection connect();
 }
