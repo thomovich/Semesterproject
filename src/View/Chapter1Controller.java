@@ -26,14 +26,14 @@ public class Chapter1Controller {
     private Button secondproblem;
 
     @FXML
-    void firstproblemonaction() {
+    void firstproblemonaction() throws Exception {
     viewhandler.openView("Mayorgame");
     }
 
     //test
     @FXML
     void secondproblemonaction() {
-
+    viewhandler.startFrontpage();
     }
     
     @FXML

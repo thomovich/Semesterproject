@@ -12,10 +12,8 @@ public class ViewHandler {
 	private Stage primaryStage;
 	private Scene currentScene;
 	private ViewModelFactory ViewModelFactory;
-	private ChaptersController chapterscontroller;
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
-	private FrontPageController FrontPageController;
 	private MayorGameController MayorGameController;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
@@ -24,21 +22,15 @@ public class ViewHandler {
 
 	}
 
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		openView("Frontpage");
+		startFrontpage();
 		currentScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 
 	public void openView(String id) {
 		Region root = null;
 		switch (id) {
-		case "Frontpage":
-			root = loadFrontpageView("FrontPage.fxml");
-			break;
-		case "Chapters":
-			root = loadChapters("Chapters.fxml");
-			break;
 		case "Chapter1":
 			root = loadChapter1("Chapter1.fxml");
 			break;
@@ -64,44 +56,9 @@ public class ViewHandler {
 		primaryStage.close();
 	}
 
-	private Region loadFrontpageView(String fxmlFile) {
-		Region root = null;
-		if (FrontPageController == null) {
-			// load from FXML
-			try {
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource(fxmlFile));
-				root = loader.load();
-				FrontPageController = loader.getController();
-				FrontPageController.init(this, ViewModelFactory.getFrontPageViewModel(), root);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			// reset window
-			FrontPageController.reset();
-		}
-		return FrontPageController.getRoot();
-	}
 	
-	private Region loadChapters(String fxmlFile) {
-		Region root = null;
-		if (chapter1controller == null) {
-			// load from FXML
-			try {
-				FXMLLoader loader = new FXMLLoader();
-				loader.setLocation(getClass().getResource(fxmlFile));
-				root = loader.load();
-				chapterscontroller = loader.getController();
-				chapterscontroller.init(this, ViewModelFactory.getChaptersViewModel(), root);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		} else {
-			chapterscontroller.reset();
-		}
-		return chapterscontroller.getRoot();
-	}
+	
+	
 	private Region loadChapter1(String fxmlFile) {
 		Region root = null;
 		if (chapter1controller == null) {
@@ -158,9 +115,16 @@ public class ViewHandler {
 		}
 		return MayorGameController.getRoot();
 	}
+	
+	
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
 		mayor.start(primaryStage,this);
+	}
+	
+	public void startFrontpage() {
+		FrontPage front = new FrontPage();
+		front.start(primaryStage,this);
 	}
 }
 
