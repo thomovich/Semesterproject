@@ -55,7 +55,6 @@ public class FrontPage {
 
     private Parent createContent() {
         addBackground();
-        System.out.println("test");
         addTitle();
 
         double lineX = WIDTH / 2 - 100;
@@ -71,9 +70,7 @@ public class FrontPage {
     }
 
     private void addBackground() {
-    	System.out.println("test");
         ImageView imageView = new ImageView(new Image(this.getClass().getResource("../Images/Worldofmath.jpg").toExternalForm()));
-        System.out.println("test");
         imageView.setFitWidth(WIDTH);
         imageView.setFitHeight(HEIGHT);
         root.getChildren().add(imageView);
@@ -167,9 +164,7 @@ public class FrontPage {
 
     public void start(Stage primaryStage, ViewHandler viewhandler){
         this.viewhandler = viewhandler;
-        System.out.println("test");
     	Scene scene = new Scene(createContent());
-    	System.out.println("test");
         primaryStage.setTitle("World Of Math");
         primaryStage.setScene(scene);
         primaryStage.setHeight(HEIGHT);

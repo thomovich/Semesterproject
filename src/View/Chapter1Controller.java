@@ -33,11 +33,11 @@ public class Chapter1Controller {
     //test
     @FXML
     void secondproblemonaction() {
-    viewhandler.startFrontpage();
     }
     
     @FXML
     void BacktoChaptersOnAction() {
+    viewhandler.startFrontpage();
 
     }
 

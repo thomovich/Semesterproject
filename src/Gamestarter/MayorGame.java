@@ -12,6 +12,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 
@@ -108,7 +109,7 @@ public class MayorGame {
 
 	private void initcontent() {
 		Rectangle bg = new Rectangle(1920, 1080);
-		bg.setFill(Color.ANTIQUEWHITE);
+		bg.setFill(new ImagePattern(new Image("/Images/Cartooncity.jpg")));
 		levelWidth = LevelData.level1[0].length() * 60;
 		for (int i = 0; i < LevelData.level1.length; i++) {
 			String line = LevelData.level1[i];
