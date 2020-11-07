@@ -1,4 +1,5 @@
-package View;
+package Utility;
+import View.FrontPage;
 import javafx.beans.binding.Bindings;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;

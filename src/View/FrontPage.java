@@ -19,6 +19,9 @@ import javafx.util.Pair;
 import java.util.Arrays;
 import java.util.List;
 
+import Utility.MenuItem;
+import Utility.Title;
+
 public class FrontPage {
 
     private static final int WIDTH = 1280;
