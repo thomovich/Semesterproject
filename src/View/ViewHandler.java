@@ -24,7 +24,7 @@ public class ViewHandler {
 
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		startmayorgame();
+		startFrontpage();
 		currentScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 
