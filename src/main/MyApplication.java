@@ -14,6 +14,9 @@ public class MyApplication extends Application {
 		MathModel model;
 		try {
 			model = new ModelManager();
+			
+			
+			
 			ViewModelFactory viewModelFactory = new ViewModelFactory(model);
 			ViewHandler view = new ViewHandler(viewModelFactory);
 			view.start(primaryStage);

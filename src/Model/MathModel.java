@@ -11,4 +11,6 @@ public interface MathModel {
 	public int getValue();
 	
 	public Connection connect();
+	
+	public void enterStudent(String input);
 }

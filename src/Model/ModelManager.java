@@ -61,6 +61,25 @@ public class ModelManager implements MathModel {
 		}
 	}
 	
+	public void enterStudent(String input) {
+		String sql = "INSERT INTO public.\"Students\"(\"Name\") VALUES('"+input+"');";
+		String quotation = "\"Rom\"";
+		System.out.println(quotation);
+		System.out.println(sql);
+		try {
+			connect();
+			Statement statement = connect.createStatement();
+			statement.executeQuery(sql);
+			System.out.println("success in adding user to database");
+			connect.close();
+		}
+		catch(SQLException e) {
+			System.out.println("Error trying to add user");
+			e.printStackTrace();
+		}
+	}
+	
+	
 	@Override
 	public int getScore() {
 		return score;
