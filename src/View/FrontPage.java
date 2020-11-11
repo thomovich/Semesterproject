@@ -32,7 +32,7 @@ public class FrontPage {
             new Pair<String, Runnable>("Chapter 1", () -> {openview("Chapter1");}),
             new Pair<String, Runnable>("Chapter 2", () -> {openview("Chapter2");}),
             new Pair<String, Runnable>("Chapter 3", () -> {}),
-            new Pair<String, Runnable>("Chapter 4", () -> {}),
+            new Pair<String, Runnable>("Chapter 4", () -> {openview("AdditionGame");}),
             new Pair<String, Runnable>("Chapter 5", () -> {}),
             new Pair<String, Runnable>("Chapter 6", () -> {}),
             new Pair<String, Runnable>("Credits", () -> {}),
@@ -186,6 +186,8 @@ public class FrontPage {
     	case "Chapter2":
     		viewhandler.openView("Chapter2");
     		break;
+    	case "AdditionGame":
+    		viewhandler.openView("AdditionGame");
     	}
     }
 }

@@ -15,6 +15,7 @@ public class ViewHandler {
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
 	private MayorGameController MayorGameController;
+	private AdditionGameController AdditionGameController;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -39,6 +40,9 @@ public class ViewHandler {
 			break;
 		case "Mayorgame": 
 			root = loadMayorGame("../GameView/MayorGame.fxml");
+			break;
+		case "AdditionGame":
+			root = loadAdditionGame("../GameView/AdditionGame.fxml");
 		}
 		currentScene.setRoot(root);
 		String title = "";
@@ -114,6 +118,26 @@ public class ViewHandler {
 			MayorGameController.reset();
 		}
 		return MayorGameController.getRoot();
+	}
+	private Region loadAdditionGame(String fxmlFile) {
+
+		Region root = null;
+		if ( AdditionGameController== null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				AdditionGameController = loader.getController();
+				AdditionGameController.init(this, ViewModelFactory.getAdditionGameViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			// reset window
+			AdditionGameController.reset();
+		}
+		return AdditionGameController.getRoot();
 	}
 	
 	

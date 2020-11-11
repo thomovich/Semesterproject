@@ -1,6 +1,7 @@
 package ViewModel;
 
 import Model.MathModel;
+import GameViewModel.AdditionGameViewModel;
 import GameViewModel.MayorGameViewModel;
 
 public class ViewModelFactory {
@@ -9,6 +10,7 @@ public class ViewModelFactory {
 	 private Chapter2ViewModel chapter2viewModel;
 	 private ChaptersViewModel chaptersviewModel;
 	 private MayorGameViewModel MayorGameViewModel;
+	 private AdditionGameViewModel AdditionGameViewModel;
 
 
 
@@ -41,4 +43,8 @@ public class ViewModelFactory {
 	 public MayorGameViewModel getMayorGameViewModel() {
 		 return MayorGameViewModel;
 	 }
+
+	public AdditionGameViewModel getAdditionGameViewModel() {
+		return AdditionGameViewModel;
+	}
 }
