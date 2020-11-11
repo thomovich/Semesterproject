@@ -22,6 +22,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,12 +48,19 @@ public class MayorGame {
 	private boolean canJump = true;
 
 	private int levelWidth;
+	
+	
 
 	private boolean dialogEvent = false, running = true;
 
 	private ViewHandler viewhandler;
 
 	boolean switchdirection;
+	
+	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+	private int halfwidth = (int) (screenSize.getWidth()/2);
+	private int width = (int) (screenSize.getWidth());
+	private int height = (int) (screenSize.getHeight());
 
 	public void start(Stage primaryStage, ViewHandler viewhandler) throws Exception {
 		this.viewhandler = viewhandler;
@@ -64,8 +72,8 @@ public class MayorGame {
 		scene.setOnKeyReleased(event -> keys.put(event.getCode(), false));
 		primaryStage.setTitle("Mayor Game");
 		primaryStage.setScene(scene);
-		primaryStage.setHeight(1080);
-		primaryStage.setWidth(1920);
+		primaryStage.setHeight(height);
+		primaryStage.setWidth(width);
 		primaryStage.centerOnScreen();
 		primaryStage.show();
 
@@ -112,9 +120,9 @@ public class MayorGame {
 	}
 
 	private void initcontent() {
-		Rectangle bg = new Rectangle(1920, 1080);
+		Rectangle bg = new Rectangle(width, height);
 		bg.setFill(new ImagePattern(new Image("/Images/Cartooncity.jpg")));
-		levelWidth = LevelData.level1[0].length() * 60;
+		levelWidth = LevelData.level1[0].length() * width/32;
 		for (int i = 0; i < LevelData.level1.length; i++) {
 			String lastchar = "0";
 			String line = LevelData.level1[i];
@@ -152,8 +160,8 @@ public class MayorGame {
 
 		player.translateXProperty().addListener((obs, old, newValue) -> {
 			int offset = newValue.intValue();
-			if (offset > 960 && offset < levelWidth - 960) {
-				gameRoot.setLayoutX(-(offset - 960));
+			if (offset > halfwidth && offset < levelWidth - halfwidth) {
+				gameRoot.setLayoutX(-(offset - halfwidth));
 			}
 		});
 
