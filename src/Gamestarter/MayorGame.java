@@ -114,7 +114,7 @@ public class MayorGame {
 		vbox = new VBox(20, btnResume, mainMenu);
 		vbox.setTranslateX(400);
 		vbox.setTranslateY(400);
-
+		//test
 		appRoot.getChildren().addAll(vbox);
 
 	}
