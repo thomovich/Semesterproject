@@ -6,6 +6,7 @@ import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import ViewModel.ViewModelFactory;
 import GameView.*;
+import Gamestarter.AdditionGame;
 import Gamestarter.MayorGame;
 
 public class ViewHandler {
@@ -15,7 +16,7 @@ public class ViewHandler {
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
 	private MayorGameController MayorGameController;
-	private AdditionGameController AdditionGameController;
+	private Chapter4Controller Chapter4Controller;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -41,8 +42,8 @@ public class ViewHandler {
 		case "Mayorgame": 
 			root = loadMayorGame("../GameView/MayorGame.fxml");
 			break;
-		case "AdditionGame":
-			root = loadAdditionGame("../GameView/AdditionGame.fxml");
+		case "Chapter4":
+			root = loadChapter4("Chapter4.fxml");
 		}
 		currentScene.setRoot(root);
 		String title = "";
@@ -119,25 +120,25 @@ public class ViewHandler {
 		}
 		return MayorGameController.getRoot();
 	}
-	private Region loadAdditionGame(String fxmlFile) {
+	private Region loadChapter4(String fxmlFile) {
 
 		Region root = null;
-		if ( AdditionGameController== null) {
+		if ( Chapter4Controller == null) {
 			// load from FXML
 			try {
 				FXMLLoader loader = new FXMLLoader();
 				loader.setLocation(getClass().getResource(fxmlFile));
 				root = loader.load();
-				AdditionGameController = loader.getController();
-				AdditionGameController.init(this, ViewModelFactory.getAdditionGameViewModel(), root);
+				Chapter4Controller = loader.getController();
+				Chapter4Controller.init(this, ViewModelFactory.getAdditionGameViewModel(), root);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		} else {
 			// reset window
-			AdditionGameController.reset();
+			Chapter4Controller.reset();
 		}
-		return AdditionGameController.getRoot();
+		return Chapter4Controller.getRoot();
 	}
 	
 	
@@ -149,6 +150,12 @@ public class ViewHandler {
 	public void startFrontpage() {
 		FrontPage front = new FrontPage();
 		front.start(primaryStage,this);
+	}
+
+	public void startAdditiongame() throws Exception {
+		AdditionGame  addition = new AdditionGame();
+		addition.start(primaryStage, this);
+		
 	}
 }
 

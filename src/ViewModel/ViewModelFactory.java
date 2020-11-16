@@ -10,6 +10,7 @@ public class ViewModelFactory {
 	 private Chapter2ViewModel chapter2viewModel;
 	 private ChaptersViewModel chaptersviewModel;
 	 private MayorGameViewModel MayorGameViewModel;
+	 private Chapter4ViewModel chapter4viewModel;
 	 private AdditionGameViewModel AdditionGameViewModel;
 
 
@@ -20,6 +21,9 @@ public class ViewModelFactory {
 		 chapter1viewModel = new Chapter1ViewModel(model);
 		 chapter2viewModel = new Chapter2ViewModel(model);
 		 MayorGameViewModel = new MayorGameViewModel(model);
+		 chapter4viewModel= new Chapter4ViewModel(model);
+		 AdditionGameViewModel = new AdditionGameViewModel();
+		 
 
 		}
 	 
@@ -44,7 +48,7 @@ public class ViewModelFactory {
 		 return MayorGameViewModel;
 	 }
 
-	public AdditionGameViewModel getAdditionGameViewModel() {
-		return AdditionGameViewModel;
+	public Chapter4ViewModel getAdditionGameViewModel() {
+		return chapter4viewModel;
 	}
 }
