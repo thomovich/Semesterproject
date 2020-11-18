@@ -9,6 +9,7 @@ public class Start {
 		Application.launch(MyApplication.class);
 		//Hej Frede
 		//hvis du kan se dette er du i det rigtige
+		//d.11/18/2020
 	}
 
 }
