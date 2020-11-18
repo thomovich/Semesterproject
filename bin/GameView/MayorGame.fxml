@@ -13,7 +13,7 @@
             <Image url="@../Images/mayor.png" />
          </image>
       </ImageView>
-      <Button fx:id="letsgo" layoutX="268.0" layoutY="316.0" mnemonicParsing="false" onAction="#letsgoonaction" text="Lets go!" />
-      <Label layoutX="208.0" layoutY="229.0" text="The Mayor needs your help!" />
+      <Button fx:id="letsgo" layoutX="264.0" layoutY="334.0" mnemonicParsing="false" onAction="#letsgoonaction" text="Lets go!" />
+      <Label layoutX="90.0" layoutY="189.0" prefHeight="130.0" prefWidth="463.0" text="The Mayor need your help!&#10;Robbers have stolen from the city bank!&#10;Use WASD to move the character around &#10;and get the money back to the city.&#10;Defeat enemies by jumping into them and solving the math problem&#10;Good Luck!" textAlignment="CENTER" />
    </children>
 </AnchorPane>

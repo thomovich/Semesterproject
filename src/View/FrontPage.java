@@ -172,7 +172,7 @@ public class FrontPage {
         primaryStage.setScene(scene);
         primaryStage.setHeight(HEIGHT);
         primaryStage.setWidth(WIDTH);
-       
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 
