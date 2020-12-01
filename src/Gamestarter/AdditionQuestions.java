@@ -15,7 +15,7 @@ public class AdditionQuestions {
 		firstNumber = (int) (Math.random() + 15) + 1;
 		secondNumber = (int) (Math.random() + 15) + 1;
 
-		answer = firstNumber * secondNumber;
+		answer = firstNumber + secondNumber;
 		question = "What is: " + answer + " + " + secondNumber;
 		return question;
 	}
@@ -34,8 +34,9 @@ public class AdditionQuestions {
 			System.out.println("Your answer is correct");
 			return true;
 			
+		}else {
+			return false;
 		}
-		return false;
 
 	}
 }

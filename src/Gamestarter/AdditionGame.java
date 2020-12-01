@@ -186,7 +186,7 @@ public class AdditionGame {
 	}
 
 	private void MainMenu() {
-		viewhandler.openView("FrontPage");
+		viewhandler.openView("Chapter4");
 	}
 
 	private void initMainmenu() {
@@ -229,15 +229,6 @@ public class AdditionGame {
 		return trees;
 	}
 
-	private Node createEntity(int x, int y, int w, int h, Color color) {
-		Rectangle entity = new Rectangle(w, h);
-		entity.setTranslateX(x);
-		entity.setTranslateY(y);
-		entity.setFill(color);
-		gameRoot.getChildren().add(entity);
-		return entity;
-	}
-
 	private void initcontent() {
 		Rectangle bg = new Rectangle(width, height);
 		bg.setFill(new ImagePattern(new Image("/Images/landscape.png")));
@@ -259,9 +250,7 @@ public class AdditionGame {
 		}
 
 		Image image = new Image("/Images/car1.png");
-		car =
-
-				createImageEntity(0, 600, 40, 40, image);
+		car = createImageEntity(0, 600, 40, 40, image);
 
 		car.translateXProperty().addListener((obs, old, newValue) -> {
 			int offset = newValue.intValue();
