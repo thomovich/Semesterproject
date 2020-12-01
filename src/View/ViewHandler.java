@@ -151,9 +151,9 @@ public class ViewHandler {
 		}
 		return Chapter4Controller.getRoot();
 	}
-<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
 
-=======
+
+
 	
 	private Region loadDuckGame(String fxmlFile) {
 
@@ -178,8 +178,6 @@ public class ViewHandler {
 	
 	
 	
-	
->>>>>>> 3609a27 Updates
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
 		mayor.start(primaryStage, this);
