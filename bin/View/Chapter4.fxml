@@ -1,45 +1,28 @@
-package View;
+<?xml version="1.0" encoding="UTF-8"?>
 
-import ViewModel.Chapter4ViewModel;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-import javafx.scene.layout.Region;
-
-public class Chapter4Controller {
-	private Region root;
-	private Chapter4ViewModel viewModel;
-	private ViewHandler viewhandler;
-
-	public Chapter4Controller() {
-	}
-
-	@FXML
-	void BacktoChaptersOnAction() {
-		viewhandler.startFrontpage();
-
-	}
-
-	public void init(ViewHandler viewHandler, Chapter4ViewModel chapter4ViewModel, Region root) {
-		this.viewhandler = viewHandler;
-		this.viewModel = chapter4ViewModel;
-		this.root = root;
-	}
-
-	public void reset() {
-	}
-
-	public Region getRoot() {
-		return root;
-	}
-
-	@FXML
-	void car1() throws Exception {
-		viewhandler.startAdditiongame();
-	}
-
-	@FXML
-	void car2() throws Exception {
-		viewhandler.startAdditiongame();
-	}
-}
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter4Controller">
+   <children>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="133.0" layoutY="173.0" onMouseClicked="#car1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/car1.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="208.0" layoutY="102.0" text="Sellect your ride!">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <ImageView fx:id="car1" fitHeight="150.0" fitWidth="200.0" layoutX="318.0" layoutY="173.0" onMouseClicked="#car2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Images/car2.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="51.0" layoutY="342.0" mnemonicParsing="false" onAction="#BacktoChaptersOnAction" text="Back" />
+   </children>
+</AnchorPane>

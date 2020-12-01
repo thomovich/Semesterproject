@@ -108,12 +108,12 @@ public class AdditionGame {
 
 	private void Movement() {
 		if (isPressed(KeyCode.RIGHT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			Move(-5);
+			moveright(-5);
 			car.setScaleX(-1);
 			Movement();
 		}
 		if (isPressed(KeyCode.LEFT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			Move(5);
+			moveleft(5);
 			car.setScaleX(-1);
 			Movement();
 		}
@@ -122,10 +122,6 @@ public class AdditionGame {
 			initMainmenu();
 			running = false;
 		}
-		if (playerVelocity.getY() < 10) {
-			playerVelocity = playerVelocity.add(0, 1);
-		}
-		Move((int) playerVelocity.getY());
 
 		for (Node trees : trees) {
 			if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
@@ -145,7 +141,7 @@ public class AdditionGame {
 
 	}
 
-	private void Move(int value) {
+	private void moveright(int value) {
 		boolean movingRight = value > 0;
 		for (int i = 0; i < Math.abs(value); i++) {
 			for (Node trees : trees) {
@@ -162,6 +158,27 @@ public class AdditionGame {
 				}
 			}
 			car.setTranslateX(car.getTranslateX() + (movingRight ? 1 : -1));
+		}
+
+	}
+
+	private void moveleft(int value) {
+		boolean movingLeft = value < 0;
+		for (int i = 0; i < Math.abs(value); i++) {
+			for (Node trees : trees) {
+				if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
+					if (movingLeft) {
+						if (car.getTranslateX() + 40 == trees.getTranslateX()) {
+							return;
+						}
+					} else {
+						if (car.getTranslateX() == trees.getTranslateX() + 60) {
+							return;
+						}
+					}
+				}
+			}
+			car.setTranslateX(car.getTranslateX() + (movingLeft ? 1 : -1));
 		}
 
 	}
@@ -214,6 +231,7 @@ public class AdditionGame {
 		gameRoot.getChildren().add(trees);
 		return trees;
 	}
+
 	private Node createEntity(int x, int y, int w, int h, Color color) {
 		Rectangle entity = new Rectangle(w, h);
 		entity.setTranslateX(x);
@@ -228,7 +246,7 @@ public class AdditionGame {
 		bg.setFill(new ImagePattern(new Image("/Images/landscape.png")));
 		levelWidth = map.level1[0].length() * width / 32;
 		for (int i = 0; i < map.level1.length; i++) {
-			 String lastchar = "0";
+			String lastchar = "0";
 			String line = map.level1[i];
 			for (int j = 0; j < line.length(); j++) {
 				switch (line.charAt(j)) {
@@ -241,20 +259,21 @@ public class AdditionGame {
 				}
 			}
 
-	}
+		}
 
-	Image image = new Image("/Images/car1.png");car=
+		Image image = new Image("/Images/car1.png");
+		car =
 
-	createImageEntity(0, 600, 40, 40, image);
+				createImageEntity(0, 600, 40, 40, image);
 
-				car.translateXProperty().addListener((obs, old, newValue) -> {
-					int offset = newValue.intValue();
-					if (offset > halfwidth && offset < levelWidth - halfwidth) {
-						gameRoot.setLayoutX(-(offset - halfwidth));
-					}
-				});
-
-				appRoot.getChildren().addAll(bg, gameRoot, uiRoot);
+		car.translateXProperty().addListener((obs, old, newValue) -> {
+			int offset = newValue.intValue();
+			if (offset > halfwidth && offset < levelWidth - halfwidth) {
+				gameRoot.setLayoutX(-(offset - halfwidth));
 			}
+		});
+
+		appRoot.getChildren().addAll(bg, gameRoot, uiRoot);
+	}
 
 }
