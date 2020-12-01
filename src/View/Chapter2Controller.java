@@ -31,24 +31,15 @@ public class Chapter2Controller {
 
 	}
 
-	@FXML
-    private Button submit3;
-
-    @FXML
-    private Button submit2;
 
     @FXML
     private Button submit1;
 
     @FXML
-    private TextField textfield1;
-
-    @FXML
-    private TextField textfield2;
-
-    @FXML
-    private TextField textfield3;
-
+    void startGame(ActionEvent event) throws InterruptedException {
+    	viewhandler.startMiniTennis();
+    }
+    
     @FXML
     void changeToFrontPage(ActionEvent event) {
     	viewhandler.startFrontpage();

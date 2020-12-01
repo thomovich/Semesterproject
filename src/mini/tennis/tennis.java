@@ -41,8 +41,9 @@ public class tennis extends JPanel{
 		tennis game = new tennis();
 		JFrame frame = new JFrame();
 		frame.add(game);
-		frame.setSize(300, 400);
+		frame.setSize(400, 500);
 		frame.setVisible(true);
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		while (true) {
 			game.move();
@@ -64,7 +65,7 @@ public class tennis extends JPanel{
 		g2d.drawString(String.valueOf(getScore()), 10, 30);
 	}
 	
-	private void move() {
+	public void move() {
 		ball.move();
 		racquet.move();
 	}

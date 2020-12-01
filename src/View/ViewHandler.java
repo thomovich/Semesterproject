@@ -4,7 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
+import mini.tennis.tennis;
 import ViewModel.ViewModelFactory;
+
+import javax.swing.JFrame;
+
 import GameView.*;
 import Gamestarter.AdditionGame;
 import Gamestarter.MayorGame;
@@ -39,7 +43,7 @@ public class ViewHandler {
 		case "Chapter2":
 			root = loadChapter2("Chapter2.fxml");
 			break;
-		case "Mayorgame": 
+		case "Mayorgame":
 			root = loadMayorGame("../GameView/MayorGame.fxml");
 			break;
 		case "Chapter4":
@@ -62,9 +66,6 @@ public class ViewHandler {
 		primaryStage.close();
 	}
 
-	
-	
-	
 	private Region loadChapter1(String fxmlFile) {
 		Region root = null;
 		if (chapter1controller == null) {
@@ -83,6 +84,7 @@ public class ViewHandler {
 		}
 		return chapter1controller.getRoot();
 	}
+
 	private Region loadChapter2(String fxmlFile) {
 		Region root = null;
 		if (chapter2controller == null) {
@@ -101,10 +103,11 @@ public class ViewHandler {
 		}
 		return chapter2controller.getRoot();
 	}
+
 	private Region loadMayorGame(String fxmlFile) {
 
 		Region root = null;
-		if ( MayorGameController== null) {
+		if (MayorGameController == null) {
 			// load from FXML
 			try {
 				FXMLLoader loader = new FXMLLoader();
@@ -121,10 +124,11 @@ public class ViewHandler {
 		}
 		return MayorGameController.getRoot();
 	}
+
 	private Region loadChapter4(String fxmlFile) {
 
 		Region root = null;
-		if ( Chapter4Controller == null) {
+		if (Chapter4Controller == null) {
 			// load from FXML
 			try {
 				FXMLLoader loader = new FXMLLoader();
@@ -141,23 +145,35 @@ public class ViewHandler {
 		}
 		return Chapter4Controller.getRoot();
 	}
-	
-	
+
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
-		mayor.start(primaryStage,this);
+		mayor.start(primaryStage, this);
 	}
-	
+
 	public void startFrontpage() {
 		FrontPage front = new FrontPage();
-		front.start(primaryStage,this);
+		front.start(primaryStage, this);
 	}
 
 	public void startAdditiongame() throws Exception {
-		AdditionGame  addition = new AdditionGame();
+		AdditionGame addition = new AdditionGame();
 		addition.start(primaryStage, this);
-		
+
+	}
+
+	public void startMiniTennis() throws InterruptedException {
+		tennis game = new tennis();
+		JFrame frame = new JFrame();
+		frame.add(game);
+		frame.setSize(300, 400);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setLocationRelativeTo(null);
+		while (true) {
+			game.move();
+			game.repaint();
+			Thread.sleep(10);
 	}
 }
-
-
+}

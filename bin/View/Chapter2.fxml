@@ -7,67 +7,19 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="485.0" prefWidth="729.0" style="-fx-background-color: #7fff00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter2Controller">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #7fff00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter2Controller">
    <children>
-      <Button fx:id="submit1" layoutX="186.0" layoutY="140.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #228b22;" text="Submit">
+      <Button fx:id="submit1" layoutX="500.0" layoutY="296.0" mnemonicParsing="false" onAction="#startGame" prefHeight="98.0" prefWidth="246.0" style="-fx-background-color: #228b22;" text="START GAME">
          <font>
             <Font name="Jokerman" size="18.0" />
          </font>
       </Button>
-      <Label layoutX="175.0" layoutY="15.0" prefHeight="56.0" prefWidth="363.0" text="Math Game For You">
+      <Label layoutX="445.0" layoutY="42.0" prefHeight="98.0" prefWidth="411.0" text="Math Game For You">
          <font>
             <Font name="Jokerman" size="37.0" />
          </font>
       </Label>
-      <TextField fx:id="textfield1" layoutX="67.0" layoutY="144.0" prefHeight="34.0" prefWidth="38.0" />
-      <Label layoutX="27.0" layoutY="90.0" text="Gæt en regneart! (+, -, * eller /)">
-         <font>
-            <Font name="Jokerman" size="21.0" />
-         </font>
-      </Label>
-      <Label layoutX="34.0" layoutY="144.0" prefHeight="27.0" prefWidth="26.0" text="30">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="119.0" layoutY="148.0" text="10 = 3">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button fx:id="submit2" layoutX="186.0" layoutY="206.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #228b22;" text="Submit">
-         <font>
-            <Font name="Jokerman" size="18.0" />
-         </font>
-      </Button>
-      <Button fx:id="submit3" layoutX="186.0" layoutY="280.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="87.0" style="-fx-background-color: #228b22;" text="Submit">
-         <font>
-            <Font name="Jokerman" size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="114.0" layoutY="218.0" text="50 = 40">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="114.0" layoutY="288.0" text="10 = 100">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textfield2" layoutX="67.0" layoutY="214.0" prefHeight="34.0" prefWidth="38.0" />
-      <TextField fx:id="textfield3" layoutX="67.0" layoutY="285.0" prefHeight="34.0" prefWidth="38.0" />
-      <Label layoutX="34.0" layoutY="214.0" prefHeight="27.0" prefWidth="26.0" text="10">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="34.0" layoutY="289.0" prefHeight="27.0" prefWidth="26.0" text="10">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Button layoutX="548.0" layoutY="414.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
+      <Button layoutX="1058.0" layoutY="644.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
          <font>
             <Font name="Jokerman" size="18.0" />
          </font>
