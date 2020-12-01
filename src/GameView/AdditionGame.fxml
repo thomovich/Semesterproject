@@ -16,3 +16,4 @@
       <Label fx:id="text" layoutX="232.0" layoutY="83.0" text="Tip: Avoid trees and rocks" />
    </children>
 </AnchorPane>
+
