@@ -34,7 +34,7 @@ public class Alien extends Sprite {
         this.y = y;
 
         if(correct) {
-        	String correctAnswer = "../Images/"
+        	String correctAnswer = "../Images/";
         }
     }
     
