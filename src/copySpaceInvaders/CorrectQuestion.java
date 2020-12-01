@@ -14,7 +14,7 @@ public class CorrectQuestion extends Sprite {
         this.x = x;
         this.y = y;
 
-        bomb = new Bomb(x, y);
+        Bomb bomb = new Bomb(x, y);
 
         String alienImg = "../Images/alien1.jpg";
         ImageIcon ii = loadImage(alienImg);

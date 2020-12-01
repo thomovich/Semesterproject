@@ -2,6 +2,7 @@ package Gamestarter;
 
 import javafx.animation.AnimationTimer;
 import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
@@ -13,6 +14,7 @@ public class DuckGame {
 	
 public void start (Stage primaryStage) {
 	Group root = new Group();
+	Scene theScene = new Scene(root);
 	primaryStage.setTitle("Duck game");
 	primaryStage.setHeight(HEIGHT);
 	primaryStage.setWidth(WIDTH);
