@@ -36,6 +36,7 @@ public class Alien extends Sprite {
         if(correct) {
         	String correctAnswer = "../Images/";
         	//Fisse
+        	//Mere fisse
         }
     }
     
