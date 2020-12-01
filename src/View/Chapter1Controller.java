@@ -33,6 +33,7 @@ public class Chapter1Controller {
     //test
     @FXML
     void secondproblemonaction() {
+    viewhandler.openView("duckgame");
     }
     
     @FXML

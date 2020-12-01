@@ -11,6 +11,7 @@ import javax.swing.JFrame;
 
 import GameView.*;
 import Gamestarter.AdditionGame;
+import Gamestarter.DuckGame;
 import Gamestarter.MayorGame;
 
 public class ViewHandler {
@@ -165,7 +166,7 @@ public class ViewHandler {
 				loader.setLocation(getClass().getResource(fxmlFile));
 				root = loader.load();
 				duckgamecontroller = loader.getController();
-				duckgamecontroller.init(this, ViewModelFactory.getAdditionGameViewModel(), root);
+				duckgamecontroller.init(this, ViewModelFactory.getDuckGameViewModel(), root);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -210,4 +211,8 @@ public class ViewHandler {
 			
 	}
 }
+	public void startDuckGame() throws Exception {
+		DuckGame duckgame = new DuckGame();
+		duckgame.start(primaryStage,this);
+	}
 }

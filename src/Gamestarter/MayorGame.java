@@ -112,7 +112,7 @@ public class MayorGame {
 		vbox = new VBox(20, btnResume, mainMenu);
 		vbox.setTranslateX(400);
 		vbox.setTranslateY(400);
-		appRoot.getChildren().addAll(vbox);
+		appRoot.getChildren().add(vbox);
 
 	}
 
@@ -180,6 +180,7 @@ public class MayorGame {
 				dialogEvent = false;
 				running = true;
 				Answer.setVisible(true);
+				
 				gameRoot.getChildren().remove(box);
 				amountofenemies--;
 				scoretext.setText(amountofenemies+"");

@@ -5,11 +5,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameView.DuckGameController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="200.0" layoutY="87.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
       <Label layoutX="200.0" layoutY="87.0" prefHeight="200.0" prefWidth="200.0" text="Feed the ducks the correct amount of bread so that there is no remainder" textAlignment="CENTER" wrapText="true" />
-      <Button layoutX="254.0" layoutY="318.0" mnemonicParsing="false" text="Start game" />
+      <Button layoutX="254.0" layoutY="318.0" mnemonicParsing="false" onAction="#StartGameOnAction" text="Start game" />
    </children>
 </AnchorPane>

@@ -1,60 +1,71 @@
 package Gamestarter;
 
+import com.andrewmatzureff.input.Mouse;
+
+import View.ViewHandler;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
-import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Circle;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
-
-
 public class DuckGame {
-	private final int WIDTH = 1280;
-	private final int HEIGHT = 720;
-	private boolean running = true;
+	private Pane appRoot = new Pane();
+	private Pane gameRoot = new Pane();
 	
-public void start (Stage primaryStage) {
-	Group root = new Group();
-	Scene theScene = new Scene(root);
-	primaryStage.setScene(theScene);
-	Canvas canvas = new Canvas( 720, 1280 );
-	root.getChildren().add(canvas);
-	
-	
-	Circle targetData = new Circle(100,100,32);
-	
-	theScene.setOnMouseClicked(new EventHandler<MouseEvent>() {
-		public void handle(MouseEvent e) {
-			if(targetData.contains(e.getX(), e.getY() ) ) {
-				//Få en popup med spørgsmål
+	public void start(Stage primaryStage, ViewHandler viewhandler) {
+		initcontent();
+		ImageView targetdata = new ImageView(new Image("/Images/duck-png-8.png"));
+		Rectangle rec = new Rectangle(100,100);
+		rec.setX(100);
+		rec.setY(100);
+		rec.setFill(Color.TRANSPARENT);
+		targetdata.setTranslateX(100);
+		targetdata.setTranslateY(100);
+		targetdata.setFitWidth(100);
+		targetdata.setFitHeight(100);
+		
+		appRoot.getChildren().add(rec);
+		appRoot.getChildren().add(targetdata);
+		
+		Scene scene = new Scene(appRoot);
+		System.out.println(rec.getX());
+		scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			public void handle(MouseEvent t) {
+				System.out.println(t.getX());
+				if(rec.contains(t.getX(), t.getY())) {
+					System.out.println("duck clicked");
+				}
 			}
-		}
-	});
-	
-	GraphicsContext gc = canvas.getGraphicsContext2D();
-	
-	primaryStage.setTitle("Duck game");
-	primaryStage.setHeight(HEIGHT);
-	primaryStage.setWidth(WIDTH);
-	primaryStage.centerOnScreen();
-	primaryStage.show();
-	Image duck = new Image("/Images/duck-png-8.png");
-	
-	AnimationTimer timer = new AnimationTimer() {
-		public void handle(long now) {
-			if(running) {
-				gc.drawImage(duck,
-						targetData.getTranslateX() - targetData.getRadius(),
-						targetData.getTranslateY() - targetData.getRadius()	);
-				
-				
+		});
+		primaryStage.setTitle("Duck Game");
+		primaryStage.setScene(scene);
+		primaryStage.setHeight(720);
+		primaryStage.setWidth(1280);
+		primaryStage.centerOnScreen();
+		primaryStage.show();
+		
+		AnimationTimer timer = new AnimationTimer() {
+			public void handle(long now) {
+				update();
 			}
-		}
-	};timer.start();
-}
+
+			
+		};
+		timer.start();
+		
+	}
+
+	private void initcontent() {
+		
+	}
+	
+	private void update() {
+		
+	}
 }
