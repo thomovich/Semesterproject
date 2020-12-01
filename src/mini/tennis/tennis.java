@@ -35,22 +35,6 @@ public class tennis extends JPanel{
 		});
 		setFocusable(true);
 	}
-
-	public static void main(String[] args) throws InterruptedException {
-		// TODO Auto-generated method stub
-		tennis game = new tennis();
-		JFrame frame = new JFrame();
-		frame.add(game);
-		frame.setSize(400, 500);
-		frame.setVisible(true);
-		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		while (true) {
-			game.move();
-			game.repaint();
-			Thread.sleep(10);
-		}
-	}
 	
 	public void paint(Graphics g) {
 		super.paint(g);
