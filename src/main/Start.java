@@ -9,6 +9,7 @@ public class Start {
 		Application.launch(MyApplication.class);
 	//Tissemand
 		// Hej mads
+		// Hej Frederik mis mis 
 	}
 
 }
