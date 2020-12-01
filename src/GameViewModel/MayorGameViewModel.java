@@ -7,6 +7,6 @@ public class MayorGameViewModel {
 private MathModel model;
 
 public MayorGameViewModel(MathModel model) {
-	
+	this.model = model;
 }
 }

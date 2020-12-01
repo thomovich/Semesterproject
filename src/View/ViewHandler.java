@@ -21,6 +21,7 @@ public class ViewHandler {
 	private Chapter2Controller chapter2controller;
 	private MayorGameController MayorGameController;
 	private Chapter4Controller Chapter4Controller;
+	private DuckGameController duckgamecontroller;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -48,6 +49,11 @@ public class ViewHandler {
 			break;
 		case "Chapter4":
 			root = loadChapter4("Chapter4.fxml");
+			break;
+		case "duckgame":
+			root = loadDuckGame("../GameView/DuckGame.fxml");
+			break;
+			
 		}
 		currentScene.setRoot(root);
 		String title = "";
@@ -145,7 +151,35 @@ public class ViewHandler {
 		}
 		return Chapter4Controller.getRoot();
 	}
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
 
+=======
+	
+	private Region loadDuckGame(String fxmlFile) {
+
+		Region root = null;
+		if ( duckgamecontroller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				duckgamecontroller = loader.getController();
+				duckgamecontroller.init(this, ViewModelFactory.getAdditionGameViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			// reset window
+			duckgamecontroller.reset();
+		}
+		return duckgamecontroller.getRoot();
+	}
+	
+	
+	
+	
+>>>>>>> 3609a27 Updates
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
 		mayor.start(primaryStage, this);
