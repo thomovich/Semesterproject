@@ -51,7 +51,7 @@ public class Chapter2Controller {
 
     @FXML
     void changeToFrontPage(ActionEvent event) {
-    	viewhandler.openView("Frontpage");
+    	viewhandler.startFrontpage();
     }
 
 
