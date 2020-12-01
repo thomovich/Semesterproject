@@ -1,4 +1,4 @@
-package mini.tennis;
+package miniTennis;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -35,6 +35,7 @@ public class tennis extends JPanel{
 		});
 		setFocusable(true);
 	}
+	
 	
 	public void paint(Graphics g) {
 		super.paint(g);

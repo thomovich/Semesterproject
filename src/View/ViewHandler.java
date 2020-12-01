@@ -4,7 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
-import mini.tennis.tennis;
+import miniTennis.tennis;
 import ViewModel.ViewModelFactory;
 
 import javax.swing.JFrame;
@@ -206,6 +206,8 @@ public class ViewHandler {
 			game.move();
 			game.repaint();
 			Thread.sleep(10);
+		
+			
 	}
 }
 }
