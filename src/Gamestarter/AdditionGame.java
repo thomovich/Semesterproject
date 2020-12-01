@@ -108,14 +108,12 @@ public class AdditionGame {
 
 	private void Movement() {
 		if (isPressed(KeyCode.RIGHT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			moveright(-5);
-			car.setScaleX(-1);
-			Movement();
+			moveright(7);
+			car.setScaleX(1);
 		}
 		if (isPressed(KeyCode.LEFT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			moveleft(5);
+			moveleft(7);
 			car.setScaleX(-1);
-			Movement();
 		}
 
 		if (isPressed(KeyCode.P)) {
@@ -209,7 +207,6 @@ public class AdditionGame {
 		vbox = new VBox(20, btnResume, mainMenu);
 		vbox.setTranslateX(400);
 		vbox.setTranslateY(400);
-		// test
 		appRoot.getChildren().addAll(vbox);
 	}
 
