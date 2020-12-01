@@ -246,7 +246,7 @@ public class AdditionGame {
 					break;
 				}
 			}
-
+//Test
 		}
 
 		Image image = new Image("/Images/car1.png");
