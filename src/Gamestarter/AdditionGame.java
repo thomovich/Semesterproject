@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Random;
 
 import View.ViewHandler;
 import javafx.animation.AnimationTimer;
@@ -32,6 +33,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class AdditionGame {
+	private static int delayTimer;
+	private static int IndexObsticle;
+	private static int IndexObsticleOld;
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 	private ArrayList<Node> trees = new ArrayList<Node>();
 	private Node car;
@@ -90,16 +94,32 @@ public class AdditionGame {
 		TextField fieldAnswer = new TextField();
 		Text Answer = new Text(problems.getAnswer());
 		Answer.setVisible(false);
+		Text correct = new Text();
+		correct.setVisible(false);
 		Button btnSubmit = new Button("Submit");
 		btnSubmit.setOnAction(event -> {
 			if (Answer.getText().equals(fieldAnswer.getText())) {
+				Answer.setVisible(true);
+
+				correct.setText("Your answer is correct. Congrats bro!");
+				correct.setVisible(true);
+
+				appRoot.getChildren().add(correct);
+
+				try {
+
+					Thread.sleep(3000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+
 				dialogEvent = false;
 				running = true;
-				Answer.setVisible(true);
 				appRoot.getChildren().remove(box);
+
 			}
 		});
-		box = new VBox(10, question, fieldAnswer, btnSubmit, Answer);
+		box = new VBox(10, question, fieldAnswer, btnSubmit, Answer, correct);
 		box.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
 		box.setTranslateX(650);
 		box.setTranslateY(450);
@@ -228,26 +248,17 @@ public class AdditionGame {
 		gameRoot.getChildren().add(trees);
 		return trees;
 	}
+	
 
 	private void initcontent() {
-		Rectangle bg = new Rectangle(width, height);
-		bg.setFill(new ImagePattern(new Image("/Images/landscape.png")));
+		Rectangle background = new Rectangle(width, height);
+		background.setFill(new ImagePattern(new Image("/Images/landscape.png")));
 		levelWidth = map.level1[0].length() * width / 32;
-		for (int i = 0; i < map.level1.length; i++) {
-			String lastchar = "0";
-			String line = map.level1[i];
-			for (int j = 0; j < line.length(); j++) {
-				switch (line.charAt(j)) {
-				case '2':
-					Image image = new Image("/Images/tree.png");
-					ImageView obsticle = createImageEntity(j * 60, i * 60, 40, 70, image);
+					Image tree = new Image("/Images/tree.png");
+					ImageView obsticle = createImageEntity(  60, 60, 40, 70, tree);
 					trees.add(obsticle);
-					lastchar = "2";
-					break;
-				}
-			}
-//Test
-		}
+					//Her skal der laves en generator til at spawne træer
+
 
 		Image image = new Image("/Images/car1.png");
 		car = createImageEntity(0, 600, 40, 40, image);
@@ -259,7 +270,7 @@ public class AdditionGame {
 			}
 		});
 
-		appRoot.getChildren().addAll(bg, gameRoot, uiRoot);
+		appRoot.getChildren().addAll(background, gameRoot, uiRoot);
 	}
 
 }
