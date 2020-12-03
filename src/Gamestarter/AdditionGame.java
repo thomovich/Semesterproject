@@ -262,7 +262,6 @@ public class AdditionGame {
 
 		Image image = new Image("/Images/car1.png");
 		car = createImageEntity(0, 600, 40, 40, image);
-
 		car.translateXProperty().addListener((obs, old, newValue) -> {
 			int offset = newValue.intValue();
 			if (offset > halfwidth && offset < levelWidth - halfwidth) {

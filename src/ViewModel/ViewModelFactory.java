@@ -4,6 +4,7 @@ import Model.MathModel;
 import GameViewModel.AdditionGameViewModel;
 import GameViewModel.DuckGameViewModel;
 import GameViewModel.MayorGameViewModel;
+import GameViewModel.OldladyViewModel;
 
 public class ViewModelFactory {
 	 private FrontPageViewModel frontPageViewModel;
@@ -14,6 +15,7 @@ public class ViewModelFactory {
 	 private Chapter4ViewModel chapter4viewModel;
 	 private DuckGameViewModel duckgameviewModel;
 	 private AdditionGameViewModel AdditionGameViewModel;
+	 private OldladyViewModel oldladyviewmodel;
 
 
 
@@ -26,6 +28,7 @@ public class ViewModelFactory {
 		 chapter4viewModel= new Chapter4ViewModel(model);
 		 AdditionGameViewModel = new AdditionGameViewModel(model);
 		 duckgameviewModel = new DuckGameViewModel(model);
+		 oldladyviewmodel = new OldladyViewModel(model);
 		 
 		 
 
@@ -58,5 +61,9 @@ public class ViewModelFactory {
 	
 	public DuckGameViewModel getDuckGameViewModel() {
 		return duckgameviewModel;
+	}
+	
+	public OldladyViewModel getOldLadyViewModel() {
+		return oldladyviewmodel;
 	}
 }

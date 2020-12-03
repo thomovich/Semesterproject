@@ -37,6 +37,11 @@ public class Chapter1Controller {
     }
     
     @FXML
+    void thirdporblemonaction() {
+    viewhandler.openView("oldlady");
+    }
+    
+    @FXML
     void BacktoChaptersOnAction() {
     viewhandler.startFrontpage();
 

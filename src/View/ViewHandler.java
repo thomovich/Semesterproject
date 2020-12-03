@@ -23,6 +23,7 @@ public class ViewHandler {
 	private MayorGameController MayorGameController;
 	private Chapter4Controller Chapter4Controller;
 	private DuckGameController duckgamecontroller;
+	private OldLadyController oldladycontroller;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -54,6 +55,8 @@ public class ViewHandler {
 		case "duckgame":
 			root = loadDuckGame("../GameView/DuckGame.fxml");
 			break;
+		case "oldlady":
+			root = loadOldLadyGame("../GameView/Oldlady.fxml");
 			
 		}
 		currentScene.setRoot(root);
@@ -67,6 +70,25 @@ public class ViewHandler {
 		primaryStage.setHeight(root.getPrefHeight());
 		primaryStage.centerOnScreen();
 		primaryStage.show();
+	}
+
+	private Region loadOldLadyGame(String fxmlFile) {
+		Region root = null;
+		if (oldladycontroller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				oldladycontroller = loader.getController();
+				oldladycontroller.init(this, ViewModelFactory.getOldLadyViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			oldladycontroller.reset();
+		}
+		return oldladycontroller.getRoot();
 	}
 
 	public void closeView() {
@@ -214,5 +236,9 @@ public class ViewHandler {
 	public void startDuckGame() throws Exception {
 		DuckGame duckgame = new DuckGame();
 		duckgame.start(primaryStage,this);
+	}
+	
+	public void startOldLadyGame() {
+		
 	}
 }
