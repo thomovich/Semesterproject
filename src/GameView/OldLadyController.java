@@ -14,12 +14,12 @@ public class OldLadyController {
 	private OldladyViewModel oldlady;
 
     @FXML
-    void BacktoChapter1(ActionEvent event) {
+    void BacktoChapter1() {
     	viewhandler.openView("Chapter1");
     }
 
     @FXML
-    void startGameOnAction(ActionEvent event) {
+    void startGameOnAction() {
     	viewhandler.startOldLadyGame();
 
     }

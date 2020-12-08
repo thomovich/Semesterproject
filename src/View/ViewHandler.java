@@ -15,7 +15,11 @@ import GameView.*;
 import Gamestarter.AdditionGame;
 import Gamestarter.DuckGame;
 import Gamestarter.MayorGame;
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
 import Space.SpaceInvaders;
+=======
+import Gamestarter.OldLadyGame;
+>>>>>>> 74ad6a9 Updates
 
 public class ViewHandler {
 	private Stage primaryStage;
@@ -61,9 +65,13 @@ public class ViewHandler {
 			break;
 		case "oldlady":
 			root = loadOldLadyGame("../GameView/Oldlady.fxml");
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
 		
 		case"Chapter5":
 			root = loadSpaceGame("Chapter5.fxml");
+=======
+			break;
+>>>>>>> 74ad6a9 Updates
 			
 		}
 		currentScene.setRoot(root);
@@ -254,7 +262,8 @@ public class ViewHandler {
 	}
 	
 	public void startOldLadyGame() {
-		
+		OldLadyGame oldlady = new OldLadyGame();
+		oldlady.Start(primaryStage, this);
 	}
 	
 	private Region loadSpaceGame(String fxmlFile) {
