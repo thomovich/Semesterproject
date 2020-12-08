@@ -421,7 +421,7 @@ public class Board extends JPanel {
 		    drawQuestion(g);
 			
 		} else {
-			model.setScore(count,currentQuestion,"chapter5");
+			model.setScore(count, currentQuestion,"\"Chapter5\"");
 			gameOver(g);
 			
 			//questionProblem=currentQuestion;
@@ -462,7 +462,7 @@ public class Board extends JPanel {
 
 		g.setColor(Color.WHITE);
 		g.setFont(small);
-		System.out.println(fourthRowAnswers.size());
+		
 		if(fourthRowAnswers.size()==4) {
 			
 			g.drawString(fourthRowAnswers.get(fourthRandomNumber),(Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2, Commons.BOARD_WIDTH/2+130);
@@ -510,7 +510,7 @@ public class Board extends JPanel {
         if(thirdRowAnswers.size()==0) {
             //second row
             if(secondRowAnswers.size()==4) {
-    			System.out.println(randomNumber);
+    			
     			g.drawString(secondRowAnswers.get(secondRandomNumber),(Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2, Commons.BOARD_WIDTH/2+130);
     			currentQuestion=secondRowAnswers.get(secondRandomNumber);
     		}
@@ -533,7 +533,7 @@ public class Board extends JPanel {
         if(secondRowAnswers.size()==0) {
             //second row
             if(firstRowAnswers.size()==4) {
-    			System.out.println(randomNumber);
+    			
     			g.drawString(firstRowAnswers.get(randomNumber),(Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2, Commons.BOARD_WIDTH/2+130);
     			currentQuestion=firstRowAnswers.get(randomNumber);
     		}
@@ -587,17 +587,15 @@ public class Board extends JPanel {
 							String alienImg = "../Images/explosion.jpg";
 							ImageIcon ii = loadImage(alienImg);
 							shot.setImage(ii.getImage());
-							System.out.println("shot");
+							
 							alien.setDying(true);
 							deaths++;
 							shot.die();
 						} else {//it is a number
-							System.out.println(currentQuestion);
 							if(alien.getQuestion().equals(currentQuestion)) {//is the aliens question the same as the current one
 								count++;
 								if(fourthRowAnswers.size()!=0) {
 								if(fourthRowAnswers.size()==4) {
-									System.out.println("success");
 									alien.setDying(true);
 									alien.setHit(true);
 									alien.die();
@@ -605,7 +603,6 @@ public class Board extends JPanel {
 									shot.die();
 								}
 								if(fourthRowAnswers.size()==3) {
-									System.out.println("success");
 									alien.setDying(true);
 									alien.setHit(true);
 									alien.die();
@@ -613,7 +610,6 @@ public class Board extends JPanel {
 									shot.die();
 								}
 								if(fourthRowAnswers.size()==2) {
-									System.out.println("success");
 									alien.setDying(true);
 									alien.setHit(true);
 									alien.die();
@@ -622,7 +618,6 @@ public class Board extends JPanel {
 								}
 								
 								if(fourthRowAnswers.size()==1) {
-									System.out.println("success");
 									alien.setDying(true);
 									alien.setHit(true);
 									alien.die();
@@ -632,7 +627,6 @@ public class Board extends JPanel {
 								}
 								if(thirdRowAnswers.size()!=0) {
 									if(thirdRowAnswers.size()==4) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -640,7 +634,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(thirdRowAnswers.size()==3) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -648,7 +641,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(thirdRowAnswers.size()==2) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -657,7 +649,6 @@ public class Board extends JPanel {
 									}
 									
 									if(thirdRowAnswers.size()==1) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -667,7 +658,6 @@ public class Board extends JPanel {
 									}
 								if(secondRowAnswers.size()!=0) {
 									if(secondRowAnswers.size()==4) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -675,7 +665,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(secondRowAnswers.size()==3) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -683,7 +672,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(secondRowAnswers.size()==2) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -692,7 +680,6 @@ public class Board extends JPanel {
 									}
 									
 									if(secondRowAnswers.size()==1) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -702,7 +689,6 @@ public class Board extends JPanel {
 									}
 								if(firstRowAnswers.size()!=0) {
 									if(firstRowAnswers.size()==4) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -710,7 +696,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(firstRowAnswers.size()==3) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -718,7 +703,6 @@ public class Board extends JPanel {
 										shot.die();
 									}
 									if(firstRowAnswers.size()==2) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -727,7 +711,6 @@ public class Board extends JPanel {
 									}
 									
 									if(firstRowAnswers.size()==1) {
-										System.out.println("success");
 										alien.setDying(true);
 										alien.setHit(true);
 										alien.die();
@@ -739,7 +722,6 @@ public class Board extends JPanel {
 							}
 							
 							else {
-								System.out.println("not succesfull");
 							inGame=false;
 							timer.stop();
 							message="Game over";

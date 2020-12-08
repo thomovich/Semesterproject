@@ -13,7 +13,7 @@ public class ModelManager implements MathModel {
 	private int Value;
 	private Connection connect;
 	private String studentName="Erik";
-	private int triesErik;
+	private int triesErikChapter5;
 
 	/*
 	private final String url ="jdbc:postgresql://dumbo.db.elephantsql.com:5432/mqygqwnx";
@@ -64,7 +64,7 @@ public class ModelManager implements MathModel {
 	}
 	
 	public void enterStudent(String input) {
-		String sql = "INSERT INTO public.\"Students\"(\"Name\") VALUES('"+input+"');";
+		String sql = "INSERT INTO public.\"Students\"(\"Name\") VALUES('"+studentName+"');";
 		String quotation = "\"Rom\"";
 		System.out.println(quotation);
 		System.out.println(sql);
@@ -91,14 +91,12 @@ public class ModelManager implements MathModel {
 	public void setScore(int score,String extraInfo,String game) {
 		String sql=null;
 		if(studentName=="Erik") {
-			System.out.println("success");
-			System.out.println(triesErik);
-		sql = "INSERT INTO public.'"+game+"'(\"Tries\",'\"Student\"','\"Score\"','\"Question\"') VALUES('"+triesErik+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+		sql = "INSERT INTO public."+game+"(Tries,Student,Score,Question) VALUES('"+triesErikChapter5+"','"+studentName+"','"+score+"','"+extraInfo+"');";
 		}
 		try {
 			connect();
 			Statement statement = connect.createStatement();
-			statement.executeQuery(sql);
+			statement.executeUpdate(sql);
 			System.out.println("success in adding user to database");
 			connect.close();
 		}
@@ -115,9 +113,9 @@ public class ModelManager implements MathModel {
 	}
 
 	@Override
-	public void setTries(String student) {
+	public void setTriesChapter5(String student) {
 		if(student=="Erik") {
-			triesErik++;
+			triesErikChapter5++;
 		}
 		
 	}

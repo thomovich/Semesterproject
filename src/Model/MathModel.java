@@ -14,5 +14,5 @@ public interface MathModel {
 	
 	public void enterStudent(String input);
 	
-	public void setTries(String student);
+	public void setTriesChapter5(String student);
 }
