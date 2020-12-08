@@ -36,10 +36,8 @@ public class Alien extends Sprite {
 
         bomb = new Bomb(x, y);
         if(correct) {
-<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject.git
-        	String correctAnswer = "../Images/";
   
-        	
+        
         	String correctAnswer = "../Images/108.png";
         	ImageIcon ii = loadImage(correctAnswer);
             setImage(ii.getImage());
