@@ -4,7 +4,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
+import Model.MathModel;
+import Model.ModelManager;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -28,6 +29,7 @@ public class Board extends JPanel {
 	private List<Alien> aliens;
 	private Player player;
 	private Shot shot;
+	private MathModel model;
 	
 	private String problemQuestion;
 	private int randomNumberAnswer;
@@ -49,7 +51,7 @@ public class Board extends JPanel {
 
 	private int jValue = 0;
 
-	
+	int count =0;
 	private int direction;
 	private int speed;
 	private int deaths = 0;
@@ -93,7 +95,9 @@ public class Board extends JPanel {
 
 	private Timer timer;
 
-	public Board(String speed) {
+	public Board(String speed,MathModel model) {
+		
+		this.model= model;
 		switch(speed) {
 		case"high":
 			direction=-3;
@@ -417,12 +421,15 @@ public class Board extends JPanel {
 		    drawQuestion(g);
 			
 		} else {
+			model.setScore(count,currentQuestion,"chapter5");
+			gameOver(g);
+			
 			//questionProblem=currentQuestion;
 			if (timer.isRunning()) {
 				timer.stop();
 			}
 
-			gameOver(g);
+			
 		}
 		
 		Toolkit.getDefaultToolkit().sync();
@@ -550,11 +557,8 @@ public class Board extends JPanel {
 		
 
 	}
-	int count =0;
 	private void update() {
-		System.out.println(count);
 		if(count>16) {
-
 			inGame = false;
 			timer.stop();
 			message = "Game won!";

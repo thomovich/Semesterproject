@@ -8,4 +8,6 @@ public class Chapter1ViewModel {
 	public Chapter1ViewModel(MathModel model) {
 		this.model = model;
 	}
+	
+	
 }

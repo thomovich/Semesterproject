@@ -3,6 +3,8 @@ package Space;
 import java.awt.EventQueue;
 import javax.swing.JFrame;
 
+import Model.MathModel;
+
 public class SpaceInvaders extends JFrame  {
 
     /**
@@ -10,19 +12,19 @@ public class SpaceInvaders extends JFrame  {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public SpaceInvaders(String speed) {
+	public SpaceInvaders(String speed,MathModel model) {
 
-        initUI(speed);
+        initUI(speed,model);
     }
 
-    private void initUI(String speed) {
+    private void initUI(String speed,MathModel model) {
 
-        add(new Board(speed));
+        add(new Board(speed,model));
 
         setTitle("Space Invaders");
         setSize(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
 
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
     }

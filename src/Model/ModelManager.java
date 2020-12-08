@@ -12,6 +12,8 @@ public class ModelManager implements MathModel {
 	private int score;
 	private int Value;
 	private Connection connect;
+	private String studentName="Erik";
+	private int triesErik;
 
 	/*
 	private final String url ="jdbc:postgresql://dumbo.db.elephantsql.com:5432/mqygqwnx";
@@ -86,14 +88,38 @@ public class ModelManager implements MathModel {
 	}
 
 	@Override
-	public void setScore(int score) {
-		this.score = score;
+	public void setScore(int score,String extraInfo,String game) {
+		String sql=null;
+		if(studentName=="Erik") {
+			System.out.println("success");
+			System.out.println(triesErik);
+		sql = "INSERT INTO public.'"+game+"'(\"Tries\",'\"Student\"','\"Score\"','\"Question\"') VALUES('"+triesErik+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+		}
+		try {
+			connect();
+			Statement statement = connect.createStatement();
+			statement.executeQuery(sql);
+			System.out.println("success in adding user to database");
+			connect.close();
+		}
+		catch(SQLException e) {
+			System.out.println("Error trying to add user");
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public int getValue() {
 		return Value;
 
+	}
+
+	@Override
+	public void setTries(String student) {
+		if(student=="Erik") {
+			triesErik++;
+		}
+		
 	}
 
 }

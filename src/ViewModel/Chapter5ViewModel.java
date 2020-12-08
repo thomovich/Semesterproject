@@ -9,4 +9,8 @@ public class Chapter5ViewModel {
 		this.model = model;
 	    
 	}
+	
+	public void setScore() {
+		
+	}
 }

@@ -14,10 +14,15 @@ import javax.swing.JFrame;
 import GameView.*;
 import Gamestarter.AdditionGame;
 import Gamestarter.DuckGame;
+
 import Gamestarter.MayorGame;
 import Space.SpaceInvaders;
 import Gamestarter.OldLadyGame;
 
+
+import Gamestarter.MayorGame;
+import Model.MathModel;
+import Space.SpaceInvaders;
 
 public class ViewHandler {
 	private Stage primaryStage;
@@ -30,10 +35,12 @@ public class ViewHandler {
 	private DuckGameController duckgamecontroller;
 	private OldLadyController oldladycontroller;
 	private Chapter5Controller chapter5Controller;
+	private MathModel model;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
 		this.currentScene = new Scene(new Region());
+		model=viewModelFactory.getModel();
 
 	}
 
@@ -250,11 +257,13 @@ public class ViewHandler {
 	}
 	
 	public void startSpaceGame(String info) {
+		startFrontpage();
 		EventQueue.invokeLater(() -> {
-
-            SpaceInvaders ex = new SpaceInvaders(info);
+			model.setTries("Erik");
+            SpaceInvaders ex = new SpaceInvaders(info,model);
             ex.setVisible(true);
         });
+		
 	}
 	
 	public void startOldLadyGame() {
