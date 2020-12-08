@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter5Controller">
+   <children>
+      <Label layoutX="51.0" layoutY="14.0" text="Spaceinvaders">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="27.0" layoutY="78.0" text="Difficulty" />
+      <TextField fx:id="information" layoutX="76.0" layoutY="73.0" onAction="#startGame" prefHeight="26.0" prefWidth="76.0" />
+      <Button layoutX="101.0" layoutY="149.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
+      <Button layoutX="14.0" layoutY="149.0" mnemonicParsing="false" onAction="#frontPage" text="Back" />
+   </children>
+</AnchorPane>

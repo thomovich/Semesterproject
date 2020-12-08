@@ -28,6 +28,7 @@ public class Board extends JPanel {
 	private List<Alien> aliens;
 	private Player player;
 	private Shot shot;
+	private int randomNumber=0;
 
 	private int direction = -1;
 	private int deaths = 0;
@@ -46,6 +47,7 @@ public class Board extends JPanel {
 
 	private void initBoard() {
 
+		randomNumber = (int)(Math.floor(Math.random()*24)+1);
 		addKeyListener(new TAdapter());
 		setFocusable(true);
 		d = new Dimension(Commons.BOARD_WIDTH, Commons.BOARD_HEIGHT);
@@ -60,17 +62,15 @@ public class Board extends JPanel {
 	private void gameInit() {
 
 		aliens = new ArrayList<>();
-		int random = (int)(Math.floor(Math.random()*24)+1);
+		
 		
 		for (int i = 0; i < 4; i++) {
 			for (int j = 0; j < 6; j++) {
-				if(random==i*j) {
+				
 					Alien alien = new Alien(Commons.ALIEN_INIT_X + 18 * j, Commons.ALIEN_INIT_Y + 18 * i);
 					aliens.add(alien);
-					
-				}
-				Alien alien = new Alien(Commons.ALIEN_INIT_X + 18 * j, Commons.ALIEN_INIT_Y + 18 * i);
-				aliens.add(alien);
+				
+				
 			}
 		}
 
@@ -81,17 +81,25 @@ public class Board extends JPanel {
 	private void drawAliens(Graphics g) {
 
 		
+		System.out.println(randomNumber);
 		
-		for (Alien alien : aliens) {
+		
+		for(int j=0;j<aliens.size();j++) {
+			
+			if(j!=randomNumber) {
+			if (aliens.get(j).isVisible()) {
 
-			if (alien.isVisible()) {
-
-				g.drawImage(alien.getImage(), alien.getX(), alien.getY(), this);
+				g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX(), aliens.get(j).getY(), this);
 			}
 
-			if (alien.isDying()) {
+			if (aliens.get(j).isDying()) {
 
-				alien.die();
+				aliens.get(j).die();
+			}
+		}
+			else {
+				g.setColor(Color.GREEN);
+				g.drawString("2", aliens.get(j).getX(), aliens.get(j).getY());
 			}
 		}
 	}
@@ -196,6 +204,9 @@ public class Board extends JPanel {
 		
 		g.drawString(message, (Commons.BOARD_WIDTH - fontMetrics.stringWidth(message)) / 2, Commons.BOARD_WIDTH / 2);
 		
+	}
+	
+	private void drawAnswer(Graphics g) {
 		
 	}
 

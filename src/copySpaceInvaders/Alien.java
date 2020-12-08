@@ -8,6 +8,7 @@ public class Alien extends Sprite {
 
     public Alien(int x, int y,boolean correct) {
     	
+    	initAnswer(x,y,correct);
     	
     }
     public Alien(int x, int y) {
@@ -33,10 +34,16 @@ public class Alien extends Sprite {
     	this.x = x;
         this.y = y;
 
+        bomb = new Bomb(x, y);
         if(correct) {
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject.git
         	String correctAnswer = "../Images/";
-        	//Fisse
-        	//Mere fisse
+  
+        	
+        	String correctAnswer = "../Images/108.png";
+        	ImageIcon ii = loadImage(correctAnswer);
+            setImage(ii.getImage());
+
         }
     }
     

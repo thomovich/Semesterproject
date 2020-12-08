@@ -16,6 +16,7 @@ public class ViewModelFactory {
 	 private DuckGameViewModel duckgameviewModel;
 	 private AdditionGameViewModel AdditionGameViewModel;
 	 private OldladyViewModel oldladyviewmodel;
+	 private Chapter5ViewModel spaceGameViewModel;
 
 
 
@@ -29,6 +30,7 @@ public class ViewModelFactory {
 		 AdditionGameViewModel = new AdditionGameViewModel(model);
 		 duckgameviewModel = new DuckGameViewModel(model);
 		 oldladyviewmodel = new OldladyViewModel(model);
+		 spaceGameViewModel = new Chapter5ViewModel(model);
 		 
 		 
 
@@ -65,5 +67,9 @@ public class ViewModelFactory {
 	
 	public OldladyViewModel getOldLadyViewModel() {
 		return oldladyviewmodel;
+	}
+	
+	public Chapter5ViewModel getChapter5ViewModel() {
+		return spaceGameViewModel;
 	}
 }

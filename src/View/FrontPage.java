@@ -33,7 +33,7 @@ public class FrontPage {
             new Pair<String, Runnable>("Chapter 2", () -> {openview("Chapter2");}),
             new Pair<String, Runnable>("Chapter 3", () -> {}),
             new Pair<String, Runnable>("Chapter 4", () -> {openview("Chapter4");}),
-            new Pair<String, Runnable>("Chapter 5", () -> {}),
+            new Pair<String, Runnable>("Chapter 5", () -> {openview("Chapter5");}),
             new Pair<String, Runnable>("Chapter 6", () -> {}),
             new Pair<String, Runnable>("Credits", () -> {}),
             new Pair<String, Runnable>("Exit to Desktop", Platform::exit)
@@ -179,6 +179,7 @@ public class FrontPage {
   
     
     public void openview(String id) {
+    	
     	switch(id) {
     	case "Chapter1":
     		viewhandler.openView("Chapter1");
@@ -189,6 +190,10 @@ public class FrontPage {
     	case "Chapter4":
     		viewhandler.openView("Chapter4");
     		break;
+    	case "Chapter5":
+    		viewhandler.openView("Chapter5");
+    		break;
     	}
+    	
     }
 }

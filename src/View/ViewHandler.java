@@ -7,12 +7,15 @@ import javafx.stage.Stage;
 import miniTennis.tennis;
 import ViewModel.ViewModelFactory;
 
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 
 import GameView.*;
 import Gamestarter.AdditionGame;
 import Gamestarter.DuckGame;
 import Gamestarter.MayorGame;
+import Space.SpaceInvaders;
 
 public class ViewHandler {
 	private Stage primaryStage;
@@ -24,6 +27,7 @@ public class ViewHandler {
 	private Chapter4Controller Chapter4Controller;
 	private DuckGameController duckgamecontroller;
 	private OldLadyController oldladycontroller;
+	private Chapter5Controller chapter5Controller;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
 		this.ViewModelFactory = viewModelFactory;
@@ -57,6 +61,9 @@ public class ViewHandler {
 			break;
 		case "oldlady":
 			root = loadOldLadyGame("../GameView/Oldlady.fxml");
+		
+		case"Chapter5":
+			root = loadSpaceGame("Chapter5.fxml");
 			
 		}
 		currentScene.setRoot(root);
@@ -238,7 +245,34 @@ public class ViewHandler {
 		duckgame.start(primaryStage,this);
 	}
 	
+	public void startSpaceGame(String info) {
+		EventQueue.invokeLater(() -> {
+
+            SpaceInvaders ex = new SpaceInvaders(info);
+            ex.setVisible(true);
+        });
+	}
+	
 	public void startOldLadyGame() {
 		
+	}
+	
+	private Region loadSpaceGame(String fxmlFile) {
+		Region root = null;
+		if (chapter5Controller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				chapter5Controller = loader.getController();
+				chapter5Controller.init(this, ViewModelFactory.getChapter5ViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			chapter5Controller.reset();
+		}
+		return chapter5Controller.getRoot();
 	}
 }
