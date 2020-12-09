@@ -35,6 +35,7 @@ public class ViewHandler {
 	private DuckGameController duckgamecontroller;
 	private OldLadyController oldladycontroller;
 	private Chapter5Controller chapter5Controller;
+	private TeacherController teacherController;
 	private MathModel model;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
@@ -72,8 +73,9 @@ public class ViewHandler {
 			root = loadOldLadyGame("../GameView/Oldlady.fxml");
 		case"Chapter5":
 			root = loadSpaceGame("Chapter5.fxml");
-
 			break;
+		case"Chapter6":
+			root=loadTeacher("Teacher.fxml");
 
 			
 		}
@@ -288,5 +290,29 @@ public class ViewHandler {
 			chapter5Controller.reset();
 		}
 		return chapter5Controller.getRoot();
+	}
+	
+	private Region loadTeacher(String fxmlFile) {
+
+		Region root = null;
+		if ( teacherController == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				teacherController = loader.getController();
+				teacherController.init(this, ViewModelFactory.getTeacherViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			// reset window
+			teacherController.reset();
+		}
+		return teacherController.getRoot();
+	}
+	public MathModel getModel() {
+		return model;
 	}
 }

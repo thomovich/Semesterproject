@@ -5,6 +5,7 @@ import GameViewModel.AdditionGameViewModel;
 import GameViewModel.DuckGameViewModel;
 import GameViewModel.MayorGameViewModel;
 import GameViewModel.OldladyViewModel;
+import GameViewModel.TeacherViewModel;
 
 public class ViewModelFactory {
 	 private FrontPageViewModel frontPageViewModel;
@@ -17,6 +18,7 @@ public class ViewModelFactory {
 	 private AdditionGameViewModel AdditionGameViewModel;
 	 private OldladyViewModel oldladyviewmodel;
 	 private Chapter5ViewModel spaceGameViewModel;
+	 private TeacherViewModel teacherViewModel;
 	 private MathModel model;
 
 
@@ -32,6 +34,7 @@ public class ViewModelFactory {
 		 duckgameviewModel = new DuckGameViewModel(model);
 		 oldladyviewmodel = new OldladyViewModel(model);
 		 spaceGameViewModel = new Chapter5ViewModel(model);
+		 teacherViewModel = new TeacherViewModel(model);
 		 this.model=model;
 		 
 		 
@@ -77,5 +80,8 @@ public class ViewModelFactory {
 	
 	public Chapter5ViewModel getChapter5ViewModel() {
 		return spaceGameViewModel;
+	}
+	public TeacherViewModel getTeacherViewModel() {
+		return teacherViewModel;
 	}
 }
