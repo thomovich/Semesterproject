@@ -2,6 +2,8 @@ package Model;
 
 import java.sql.Connection;
 
+import javafx.collections.ObservableList;
+
 public interface MathModel {
 
 	public int getScore();
@@ -16,5 +18,6 @@ public interface MathModel {
 	
 	public void setTriesChapter5(String student);
 	
-
+	public ObservableList<Content> getTable(String student, String chapter);
+		
 }

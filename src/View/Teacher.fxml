@@ -21,12 +21,6 @@
       <TextField fx:id="chapter" layoutX="226.0" layoutY="155.0" />
       <Button layoutX="454.0" layoutY="155.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
       <TableView fx:id="contentTable" layoutX="143.0" layoutY="200.0" prefHeight="200.0" prefWidth="302.0">
-        <columns>
-          <TableColumn fx:id="tries" prefWidth="75.0" text="Tries" />
-          <TableColumn fx:id="student" prefWidth="75.0" text="Student" />
-            <TableColumn fx:id="score" prefWidth="75.0" text="Score" />
-            <TableColumn fx:id="question" prefWidth="75.0" text="Question" />
-        </columns>
       </TableView>
    </children>
 </AnchorPane>

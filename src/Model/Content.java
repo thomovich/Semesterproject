@@ -2,19 +2,19 @@ package Model;
 
 public class Content {
 
-	private String tries;
+	private double tries;
 	private String student;
-	private String score;
+	private double score;
 	private String question;
 	
-	public Content(String tries, String student,String score, String question) {
-		this.question=question;
-		this.score=score;
-		this.student=student;
+	public Content(double tries, String student,double score, String question) {
 		this.tries=tries;
+		this.student=student;
+		this.score=score;
+		this.question=question;
 	}
 
-	public String getTries() {
+	public double getTries() {
 		return tries;
 	}
 
@@ -22,7 +22,7 @@ public class Content {
 		return student;
 	}
 
-	public String getScore() {
+	public double getScore() {
 		return score;
 	}
 

@@ -3,8 +3,12 @@ package Model;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 
 public class ModelManager implements MathModel {
@@ -118,6 +122,36 @@ public class ModelManager implements MathModel {
 			triesErikChapter5++;
 		}
 		
+	}
+
+	@Override
+	public ObservableList<Content> getTable(String student, String chapter) {
+		
+		
+		ObservableList<Content> data = FXCollections.observableArrayList();
+			String sql = "SELECT * FROM public.\""+chapter+"\";";
+			try {
+				connect();
+				Statement statement = connect.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				
+				while (rs.next()){
+					
+	            	data.add(new Content(rs.getInt(1), rs.getString(2),rs.getDouble(3), rs.getString(4)));
+	            			
+	            }
+	            statement.close();
+			}
+			catch (SQLException e) {
+
+				System.out.println("Error trying to getItems");
+
+				e.printStackTrace();
+			}
+			
+		
+		
+		return data;
 	}
 
 }
