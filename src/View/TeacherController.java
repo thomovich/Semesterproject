@@ -7,13 +7,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.Region;
-
-
 
 public class TeacherController {
 	
@@ -29,6 +28,8 @@ public class TeacherController {
 	@FXML 
 	private TextField chapter;
 	@FXML 
+	private CheckBox averageOption;
+	@FXML 
 	private TableView<Content> contentTable;
 
 
@@ -36,18 +37,22 @@ public class TeacherController {
     public void submit() {	
     	String studentName = student.getText();
     	String chapterId = chapter.getText();
-    	System.out.println(chapterId);
-    	if(chapterId.equals("")) {
+    	boolean average = averageOption.isSelected();
+    	System.out.println(average);
+    	if(average) {
     		studentsSetup();
-    		 data= model.getTableStudent(studentName);
-         	contentTable.setItems(data);
+   		 data= model.getAverageScoreGame(studentName,chapterId);
+        	contentTable.setItems(data);
     	}
     	else {
     		chapterSetup(chapterId);
     		 data= model.getTable(studentName, chapterId);
          	contentTable.setItems(data);
     	}
+    	
     }
+    
+ 
     
     
     public void init(ViewHandler viewHandler, TeacherViewModel teacher, Region root) {
@@ -83,17 +88,11 @@ public class TeacherController {
     
     public void studentsSetup() {
     	
-    	
     	contentTable.getColumns().clear();
     	
     	TableColumn<Content, String> name= new TableColumn<Content, String>("Name"); 	//creates a new table column with the name temperature in
 		name.setCellValueFactory(new PropertyValueFactory<>("Name")); 			//sets the cell values, so that all rows will be displayed
 		contentTable.getColumns().add(name); 	
-			
-		
-		TableColumn<Content, Integer> totalScore= new TableColumn<Content, Integer>("total Score"); 	//creates a new table column with the name temperature in
-		totalScore.setCellValueFactory(new PropertyValueFactory<>("Total Score")); 			//sets the cell values, so that all rows will be displayed
-		contentTable.getColumns().add(totalScore); 	
 		
 		TableColumn<Content, String> avgScore = new TableColumn<Content, String>("avg Score"); 	//creates a new table column with the name temperature in
 		avgScore.setCellValueFactory(new PropertyValueFactory<>("Avg Score")); 			//sets the cell values, so that all rows will be displayed

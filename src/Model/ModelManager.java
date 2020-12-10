@@ -202,9 +202,31 @@ public class ModelManager implements MathModel {
 	}
 
 	@Override
-	public ObservableList<Content> getTableStudent(String student) {
-		// TODO Auto-generated method stub
-		return null;
+	public ObservableList<Content> getAverageScoreGame(String student,String chapter) {
+		ObservableList<Content> data = FXCollections.observableArrayList();
+		if(studentPresent(student)) {
+			String sql ="SELECT \"NameId\" AS Name, AVG(Score) AS Score FROM public.\"Students\" NATURAL JOIN public.\""+chapter+"\" WHERE \"NameId\"=''"+student+"'' GROUP BY ''"+student+"''";
+			try {
+				connect();
+				Statement statement = connect.createStatement();
+				ResultSet rs = statement.executeQuery(sql);
+				
+				while (rs.next()){
+					
+	            	data.add(new Content(rs.getInt(1), rs.getString(2),rs.getDouble(3), rs.getString(4)));
+	            			
+	            }
+	            statement.close();
+			}
+			catch (SQLException e) {
+
+				System.out.println("Error trying to getItems");
+
+				e.printStackTrace();
+			}
+		}
+			
+		return data;
 	}
 
 }

@@ -13,6 +13,8 @@ public class Content {
 		this.score=score;
 		this.question=question;
 	}
+	
+	public Content(String name,)
 
 	public double getTries() {
 		return tries;
@@ -29,4 +31,6 @@ public class Content {
 	public String getQuestion() {
 		return question;
 	}
+	
+	
 }

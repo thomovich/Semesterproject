@@ -20,7 +20,7 @@ public interface MathModel {
 	
 	public ObservableList<Content> getTable(String student, String chapter);
 	
-	public ObservableList<Content> getTableStudent(String student);
+	public ObservableList<Content> getAverageScoreGame(String student,String chapter);
 	
 	public void setCurrentStudent(String student);
 	

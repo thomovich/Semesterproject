@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class Score extends Stage{
 private Text Score = new Text();
 
-public Score(int score, String game) {
+public Score(int score, String game,MathModel model) {
 	Button btnOK = new Button("OK");
 	Score.setText("Your score is: "+score);
 	btnOK.setOnAction(event->{
@@ -26,6 +26,9 @@ public Score(int score, String game) {
 	setScene(scene);
 	show();
 }
+
+
+
 
 
 }
