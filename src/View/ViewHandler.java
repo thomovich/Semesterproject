@@ -79,6 +79,7 @@ public class ViewHandler {
 			root=loadTeacher("Teacher.fxml");
 			break;
 
+			//Update
 			
 		}
 		currentScene.setRoot(root);
