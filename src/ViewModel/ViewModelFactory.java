@@ -19,6 +19,7 @@ public class ViewModelFactory {
 	 private OldladyViewModel oldladyviewmodel;
 	 private Chapter5ViewModel spaceGameViewModel;
 	 private TeacherViewModel teacherViewModel;
+	 private LoginViewModel LoginViewModel;
 	 private MathModel model;
 
 
@@ -35,6 +36,7 @@ public class ViewModelFactory {
 		 oldladyviewmodel = new OldladyViewModel(model);
 		 spaceGameViewModel = new Chapter5ViewModel(model);
 		 teacherViewModel = new TeacherViewModel(model);
+		 LoginViewModel = new LoginViewModel(model);
 		 this.model=model;
 		 
 		 

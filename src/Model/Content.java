@@ -14,7 +14,9 @@ public class Content {
 		this.question=question;
 	}
 	
-	public Content(String name,)
+	public Content(String name) {
+		
+	}
 
 	public double getTries() {
 		return tries;
