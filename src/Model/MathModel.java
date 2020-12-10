@@ -19,5 +19,11 @@ public interface MathModel {
 	public void setTriesChapter5(String student);
 	
 	public ObservableList<Content> getTable(String student, String chapter);
+	
+	public ObservableList<Content> getTableStudent(String student);
+	
+	public void setCurrentStudent(String student);
+	
+	public boolean correctStudent(String student);
 		
 }

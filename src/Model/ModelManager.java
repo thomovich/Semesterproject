@@ -6,6 +6,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ public class ModelManager implements MathModel {
 	private int Value;
 	private Connection connect;
 	private String studentName="Erik";
+	private ArrayList<String> students;
 	private int triesErikChapter5;
 
 	/*
@@ -40,6 +42,7 @@ public class ModelManager implements MathModel {
 	}
 	
 	public ModelManager() {
+		students= new ArrayList<String> ();
 		Driver driver = new org.postgresql.Driver(); 
 				try {
 					DriverManager.registerDriver(driver);
@@ -68,10 +71,12 @@ public class ModelManager implements MathModel {
 	}
 	
 	public void enterStudent(String input) {
+		
 		String sql = "INSERT INTO public.\"Students\"(\"Name\") VALUES('"+studentName+"');";
 		String quotation = "\"Rom\"";
 		System.out.println(quotation);
 		System.out.println(sql);
+		if(studentPresent(input)) {
 		try {
 			connect();
 			Statement statement = connect.createStatement();
@@ -84,6 +89,7 @@ public class ModelManager implements MathModel {
 			e.printStackTrace();
 		}
 	}
+	}
 	
 	
 	@Override
@@ -94,7 +100,7 @@ public class ModelManager implements MathModel {
 	@Override
 	public void setScore(int score,String extraInfo,String game) {
 		String sql=null;
-		if(studentName=="Erik") {
+		if(studentPresent("Erik")) {
 		sql = "INSERT INTO public."+game+"(Tries,Student,Score,Question) VALUES('"+triesErikChapter5+"','"+studentName+"','"+score+"','"+extraInfo+"');";
 		}
 		try {
@@ -123,12 +129,12 @@ public class ModelManager implements MathModel {
 		}
 		
 	}
+	
 
 	@Override
 	public ObservableList<Content> getTable(String student, String chapter) {
-		
-		
 		ObservableList<Content> data = FXCollections.observableArrayList();
+		if(studentPresent(student)) {
 			String sql = "SELECT * FROM public.\""+chapter+"\";";
 			try {
 				connect();
@@ -148,10 +154,57 @@ public class ModelManager implements MathModel {
 
 				e.printStackTrace();
 			}
+		}
 			
-		
-		
 		return data;
+	}
+	
+	public boolean studentPresent(String student){
+		String sql ="SELECT \"Name\" FROM public.\"Students\" WHERE \"Name\"='"+student+"'";
+		try {
+			connect();
+			Statement statement = connect.createStatement();
+			ResultSet rest = statement.executeQuery(sql);
+			int i=0;
+			while(rest.next()) {
+				i++;
+				if(rest.getString(i).equals(student)) {
+					System.out.println("username already existing");
+					connect.close();
+					return true;
+				}
+				
+			}
+			connect.close();
+		}
+		catch(SQLException exception) {
+			System.out.println("unable to read if the user is in the database");
+			exception.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+
+	@Override
+	public void setCurrentStudent(String student) {
+		this.studentName=student;
+		students.add(student);
+		
+	}
+
+	@Override
+	public boolean correctStudent(String student) {
+		if(students.contains(student)) {
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public ObservableList<Content> getTableStudent(String student) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
