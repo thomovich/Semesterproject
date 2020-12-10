@@ -1,4 +1,4 @@
-package Gamestarter;
+package Utility;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;

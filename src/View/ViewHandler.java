@@ -71,11 +71,13 @@ public class ViewHandler {
 			break;
 		case "oldlady":
 			root = loadOldLadyGame("../GameView/Oldlady.fxml");
+			break;
 		case"Chapter5":
 			root = loadSpaceGame("Chapter5.fxml");
 			break;
 		case"Chapter6":
 			root=loadTeacher("Teacher.fxml");
+			break;
 
 			
 		}
