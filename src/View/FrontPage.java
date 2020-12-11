@@ -31,7 +31,7 @@ public class FrontPage {
     private List<Pair<String, Runnable>> menuData = Arrays.asList(
             new Pair<String, Runnable>("Chapter 1", () -> {openview("Chapter1");}),
             new Pair<String, Runnable>("Chapter 2", () -> {openview("Chapter2");}),
-            new Pair<String, Runnable>("Chapter 3", () -> {}),
+            new Pair<String, Runnable>("Chapter 3", () -> {openview("Chapter3");}),
             new Pair<String, Runnable>("Chapter 4", () -> {openview("Chapter4");}),
             new Pair<String, Runnable>("Chapter 5", () -> {openview("Chapter5");}),
             new Pair<String, Runnable>("Teacher", () -> {openview("Chapter6");}),
@@ -186,6 +186,9 @@ public class FrontPage {
     		break;
     	case "Chapter2":
     		viewhandler.openView("Chapter2");
+    		break;
+    	case "Chapter3":
+    		viewhandler.openView("Chapter3");
     		break;
     	case "Chapter4":
     		viewhandler.openView("Chapter4");

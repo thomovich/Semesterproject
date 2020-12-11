@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #7fff00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter3Controller">
+   <children>
+      <Button fx:id="submit1" layoutX="500.0" layoutY="296.0" mnemonicParsing="false" onAction="#startGame" prefHeight="98.0" prefWidth="246.0" style="-fx-background-color: #228b22;" text="START GAME">
+         <font>
+            <Font name="Jokerman" size="18.0" />
+         </font>
+      </Button>
+      <Label layoutX="445.0" layoutY="42.0" prefHeight="98.0" prefWidth="411.0" text="Math Game For You">
+         <font>
+            <Font name="Jokerman" size="37.0" />
+         </font>
+      </Label>
+      <Button layoutX="1058.0" layoutY="644.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
+         <font>
+            <Font name="Jokerman" size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

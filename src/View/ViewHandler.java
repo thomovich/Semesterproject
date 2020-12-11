@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 import miniTennis.tennis;
+import minus_Game.Quiz;
 import ViewModel.ViewModelFactory;
 
 import java.awt.EventQueue;
@@ -30,6 +31,7 @@ public class ViewHandler {
 	private ViewModelFactory ViewModelFactory;
 	private Chapter1Controller chapter1controller;
 	private Chapter2Controller chapter2controller;
+	private Chapter3Controller chapter3controller;
 	private MayorGameController MayorGameController;
 	private Chapter4Controller Chapter4Controller;
 	private DuckGameController duckgamecontroller;
@@ -59,6 +61,9 @@ public class ViewHandler {
 			break;
 		case "Chapter2":
 			root = loadChapter2("Chapter2.fxml");
+			break;
+		case "Chapter3":
+			root = loadChapter3("Chapter3.fxml");
 			break;
 		case "Mayorgame":
 			root = loadMayorGame("../GameView/MayorGame.fxml");
@@ -154,6 +159,24 @@ public class ViewHandler {
 			chapter2controller.reset();
 		}
 		return chapter2controller.getRoot();
+	}
+	private Region loadChapter3(String fxmlFile) {
+		Region root = null;
+		if (chapter3controller == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				chapter3controller = loader.getController();
+				chapter3controller.init(this, ViewModelFactory.getChapter3ViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			chapter3controller.reset();
+		}
+		return chapter3controller.getRoot();
 	}
 
 	private Region loadMayorGame(String fxmlFile) {
@@ -256,6 +279,11 @@ public class ViewHandler {
 			
 	}
 }
+	
+	public void startMinus_Game() throws InterruptedException {
+		Quiz quiz = new Quiz();
+	}
+	
 	public void startDuckGame() throws Exception {
 		DuckGame duckgame = new DuckGame();
 		duckgame.start(primaryStage,this);
