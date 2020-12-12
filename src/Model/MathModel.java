@@ -1,4 +1,4 @@
-package Model;
+    package Model;
 
 import java.sql.Connection;
 
@@ -14,9 +14,7 @@ public interface MathModel {
 	
 	public Connection connect();
 	
-	public void enterStudent(String input);
-	
-	public void setTriesChapter5(String student);
+	public boolean enterStudent(String input);
 	
 	public ObservableList<Content> getTable(String student, String chapter);
 	
@@ -27,3 +25,5 @@ public interface MathModel {
 	public boolean correctStudent(String student);
 		
 }
+
+    

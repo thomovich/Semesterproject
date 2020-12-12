@@ -1,4 +1,4 @@
-package View;
+    package View;
 
 import GameViewModel.TeacherViewModel;
 import Model.Content;
@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -31,6 +32,10 @@ public class TeacherController {
     private CheckBox averageOption;
     @FXML 
     private TableView<Content> contentTable;
+    @FXML
+    private TextField studentAdd;
+    @FXML
+    private Label noStudent;
 
 
     @FXML
@@ -51,6 +56,24 @@ public class TeacherController {
              contentTable.setItems(data);
         }
         
+    }
+    @FXML 
+    public void submitStudent() {
+    	
+    	
+    		String student = studentAdd.getText();
+    		noStudent.setText("");
+    		boolean check=model.enterStudent(student);
+    		if(check) {
+    			noStudent.setText("the student ID has been added");
+    		}
+    		else {
+    			noStudent.setText(("the student ID is present and therefore not added"));
+    		
+    	}
+    	
+    	
+    	
     }
     
  
@@ -109,3 +132,4 @@ public class TeacherController {
         return root;
     }
 }
+    

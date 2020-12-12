@@ -1,4 +1,4 @@
-package Model;
+    package Model;
 
 import java.sql.Connection;
 import java.sql.Driver;
@@ -19,7 +19,7 @@ public class ModelManager implements MathModel {
     private Connection connect;
     private String studentName="Erik";
     private ArrayList<String> students;
-    private int triesErikChapter5;
+    private int tries;
 
     /*
     private final String url ="jdbc:postgresql://dumbo.db.elephantsql.com:5432/mqygqwnx";
@@ -70,25 +70,33 @@ public class ModelManager implements MathModel {
         }
     }
     
-    public void enterStudent(String input) {
+    public boolean enterStudent(String input) {
         
-        String sql = "INSERT INTO public.\"Students\"(\"Name\") VALUES('"+studentName+"');";
-        String quotation = "\"Rom\"";
-        System.out.println(quotation);
-        System.out.println(sql);
-        if(studentPresent(input)) {
+        String sql = "INSERT INTO public.\"Students\"(\"NameId\") VALUES('"+input+"');";
+        boolean check=false;
+        
+       
+        if(!studentPresent(input)) {
+        	check=true;
         try {
             connect();
             Statement statement = connect.createStatement();
             statement.executeQuery(sql);
             System.out.println("success in adding user to database");
             connect.close();
+            
         }
         catch(SQLException e) {
-            System.out.println("Error trying to add user");
+            System.out.println("user is not in the database");
             e.printStackTrace();
+            
         }
+        
+    
+    }else {
+        check=false;
     }
+        return check;
     }
     
     
@@ -101,7 +109,7 @@ public class ModelManager implements MathModel {
     public void setScore(int score,String extraInfo,String game) {
         String sql=null;
         if(studentPresent("Erik")) {
-        sql = "INSERT INTO public."+game+"(Tries,Student,Score,Question) VALUES('"+triesErikChapter5+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        sql = "INSERT INTO public."+game+"(Tries,Student,Score,Question) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
         }
         try {
             connect();
@@ -113,7 +121,6 @@ public class ModelManager implements MathModel {
         catch(SQLException e) {
             System.out.println("Error trying to add user");
             e.printStackTrace();
-            //Updates
         }
     }
 
@@ -123,12 +130,37 @@ public class ModelManager implements MathModel {
 
     }
 
-    @Override
-    public void setTriesChapter5(String student) {
-        if(student=="Erik") {
-            triesErikChapter5++;
-        }
+    
+    public int setTriesChapter5(String student,String chapter) {
         
+        	int tries = getTries(student,chapter);
+            return tries++;
+        
+        
+    }
+    
+    public int getTries(String student,String chapter) {
+    	String sql = "SELECT \"Tries\" FROM public.\""+chapter+"\" WHERE \"StudentID\"=."+student+"' GROUP BY \"Tries\"";
+    	int tries=0;
+        try {
+            connect();
+            Statement statement = connect.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while (rs.next()){
+                if(rs.isLast()){
+                	 tries=rs.getInt(1);
+                }           
+            }
+            statement.close();
+        }
+        catch (SQLException e) {
+
+            System.out.println("Error trying to getItems");
+
+            e.printStackTrace();
+        }
+        return tries;
     }
     
 
@@ -161,18 +193,25 @@ public class ModelManager implements MathModel {
     }
     
     public boolean studentPresent(String student){
+    	
+    	boolean check=false;
         String sql ="SELECT \"NameId\" FROM public.\"Students\" WHERE \"NameId\"='"+student+"'";
         try {
+        	
             connect();
             Statement statement = connect.createStatement();
             ResultSet rest = statement.executeQuery(sql);
+            
             int i=0;
             while(rest.next()) {
                 i++;
                 if(rest.getString(i).equals(student)) {
                     System.out.println("username already existing");
                     connect.close();
-                    return true;
+                    check = true;
+                }
+                else {
+                	 check = false;
                 }
                 
             }
@@ -183,7 +222,7 @@ public class ModelManager implements MathModel {
             exception.printStackTrace();
         }
         
-        return false;
+        return check;
     }
     
 
@@ -230,3 +269,4 @@ public class ModelManager implements MathModel {
     }
 
 }
+    
