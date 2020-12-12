@@ -113,6 +113,7 @@ public class ModelManager implements MathModel {
         catch(SQLException e) {
             System.out.println("Error trying to add user");
             e.printStackTrace();
+            //Updates
         }
     }
 
