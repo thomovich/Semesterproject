@@ -41,11 +41,11 @@ public class FrontPage {
     
     private List<ImageView> images = Arrays.asList(
     		CreateImage(40,42, new Image("/Images/Division.png")),
+    		CreateImage(40,42, new Image("/Images/plus.png")),
     		CreateImage(40,42, new Image("/Images/Minus.png")),
     		CreateImage(40,42, new Image("/Images/plus.png")),
-    		CreateImage(40,42, new Image("/Images/plus.png")),
-    		CreateImage(40,42, new Image("/Images/plus.png")),
-    		CreateImage(40,42, new Image("/Images/plus.png")),
+    		CreateImage(40,42, new Image("/Images/Gange.png")),
+    		CreateImage(40,42, new Image("/Images/Teacher.png")),
     		CreateImage(40,42, new Image("/Images/plus.png")),
     		CreateImage(40,42, new Image("/Images/plus.png"))
     		

@@ -8,5 +8,9 @@ public class LoginViewModel {
 	public LoginViewModel(MathModel model) {
 		this.model = model;
 	}
+	
+	public void setUser(String student) {
+		model.setCurrentStudent(student);
+	}
 
 }

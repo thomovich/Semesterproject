@@ -92,4 +92,8 @@ public class ViewModelFactory {
 	public TeacherViewModel getTeacherViewModel() {
 		return teacherViewModel;
 	}
+	
+	public LoginViewModel getLoginViewModel() {
+		return LoginViewModel;
+	}
 }

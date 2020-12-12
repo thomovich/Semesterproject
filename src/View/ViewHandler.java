@@ -38,6 +38,7 @@ public class ViewHandler {
 	private OldLadyController oldladycontroller;
 	private Chapter5Controller chapter5Controller;
 	private TeacherController teacherController;
+	private Logincontroller loginController;
 	private MathModel model;
 
 	public ViewHandler(ViewModelFactory viewModelFactory) {
@@ -49,7 +50,7 @@ public class ViewHandler {
 
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		startFrontpage();
+		openView("Login");
 		currentScene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 	}
 
@@ -83,6 +84,8 @@ public class ViewHandler {
 		case"Chapter6":
 			root=loadTeacher("Teacher.fxml");
 			break;
+		case "Login":
+			root=loadLogin("Login.fxml");
 
 			//Update
 			
@@ -99,6 +102,8 @@ public class ViewHandler {
 		primaryStage.centerOnScreen();
 		primaryStage.show();
 	}
+
+
 
 	private Region loadOldLadyGame(String fxmlFile) {
 		Region root = null;
@@ -245,11 +250,32 @@ public class ViewHandler {
 		return duckgamecontroller.getRoot();
 	}
 	
+	private Region loadLogin(String fxmlFile) {
+
+		Region root = null;
+		if ( loginController == null) {
+			// load from FXML
+			try {
+				FXMLLoader loader = new FXMLLoader();
+				loader.setLocation(getClass().getResource(fxmlFile));
+				root = loader.load();
+				loginController = loader.getController();
+				loginController.init(this, ViewModelFactory.getLoginViewModel(), root);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			// reset window
+			loginController.reset();
+		}
+		return loginController.getRoot();
+	}
+	
 	
 	
 	public void startmayorgame() throws Exception {
 		MayorGame mayor = new MayorGame();
-		mayor.start(primaryStage, this);
+		mayor.start(primaryStage, this, model);
 	}
 
 	public void startFrontpage() {
@@ -269,7 +295,6 @@ public class ViewHandler {
 		frame.add(game);
 		frame.setSize(300, 400);
 		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLocationRelativeTo(null);
 		while (true) {
 			game.move();
@@ -286,7 +311,7 @@ public class ViewHandler {
 	
 	public void startDuckGame() throws Exception {
 		DuckGame duckgame = new DuckGame();
-		duckgame.start(primaryStage,this);
+		duckgame.start(primaryStage,this,model);
 	}
 	
 	public void startSpaceGame(String info) {

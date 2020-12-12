@@ -1,6 +1,8 @@
 package View;
 
+import ViewModel.LoginViewModel;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
@@ -8,16 +10,39 @@ import javafx.scene.layout.Region;
 public class Logincontroller {
 	private Region root;
 	private ViewHandler viewhandler;
-	
+	private LoginViewModel loginviewmodel;
+
 	@FXML
-    private PasswordField Passwordfield;
+	private ComboBox<String> Usernames;
 
-    @FXML
-    private TextField Usernamefield;
+	@FXML
+	void Loginonaction() {
+	if(Usernames.getValue() == null) {
+	System.out.println("Choose a user");
+	} else {
+		loginviewmodel.setUser(Usernames.getValue());
+		viewhandler.startFrontpage();
+	}
+	
+	}
+	
+	public void initialize() {
+	Usernames.getItems().addAll("Erik", "Karl", "Jens", "Teacher");
+	}
 
-    @FXML
-    void Loginonaction() {
-    	
+	public void init(ViewHandler viewHandler, LoginViewModel loginViewModel, Region root) {
+	this.viewhandler = viewHandler;
+	this.loginviewmodel = loginViewModel;
+	this.root = root;
+	
+	}
 
-    }
+	public void reset() {
+		
+	}
+
+	public Region getRoot() {
+		// TODO Auto-generated method stub
+		return root;
+	}
 }

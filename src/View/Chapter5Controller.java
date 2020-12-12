@@ -4,6 +4,8 @@ import GameViewModel.SpaceGameViewModel;
 import ViewModel.Chapter5ViewModel;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 
@@ -13,11 +15,13 @@ public class Chapter5Controller {
 	private ViewHandler viewhandler;
 	private Region root;
 	private Chapter5ViewModel space;
-
-
+	
+	
+		@FXML
+	    private Label label;
 
 	    @FXML
-	    private TextField information;
+	    private ComboBox<String> difficulties;
 	    
 
 	    @FXML
@@ -27,8 +31,14 @@ public class Chapter5Controller {
 
 	    @FXML
 	    void startGame(ActionEvent event) {
-	    	String info = information.getText();
+	    if(difficulties.getValue() == null) {
+	    	label.setText("choose a difficulty");
+	    } else {
+	    	String info = difficulties.getValue();
 	    	viewhandler.startSpaceGame(info);
+	    	label.setText("Space Invaders");
+	    }
+	    	
 	    }
 
 	
@@ -36,6 +46,7 @@ public class Chapter5Controller {
     	this.viewhandler = viewHandler;
     	this.root = root;
     	this.space = space;
+    	difficulties.getItems().addAll("low", "medium", "high");
     }
 
 	public void reset() {

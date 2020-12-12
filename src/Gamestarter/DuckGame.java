@@ -6,6 +6,7 @@ import java.util.Iterator;
 
 import com.andrewmatzureff.input.Mouse;
 
+import Model.MathModel;
 import Utility.Score;
 import View.ViewHandler;
 import javafx.animation.AnimationTimer;
@@ -43,11 +44,13 @@ public class DuckGame {
 	private ArrayList<Node> ducks = new ArrayList<Node>();
 	private boolean running = true;
 	private ViewHandler viewhandler;
+	private MathModel model;
 	String[] musicfiles = {"animals038.mp3"};
 	
-	public void start(Stage primaryStage, ViewHandler viewhandler) {
+	public void start(Stage primaryStage, ViewHandler viewhandler, MathModel model) {
 		initcontent();
 		this.viewhandler = viewhandler;
+		this.model = model;
 		
 		
 		
@@ -176,7 +179,7 @@ public class DuckGame {
 	
 	private void endgame() {
 		running = false;
-		Score score = new Score(errors, "duckgame");
+		Score score = new Score(errors, "duckgame", model);
 		score.setOnCloseRequest(event->{
 			viewhandler.openView("Chapter1");
 		});

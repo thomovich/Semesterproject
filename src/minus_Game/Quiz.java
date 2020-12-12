@@ -63,7 +63,6 @@ public class Quiz implements ActionListener{
 	});
 	
 public Quiz() {
-	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setSize(650, 650);
 	frame.getContentPane().setBackground(new Color(50, 50, 50));
 	frame.setLayout(null);

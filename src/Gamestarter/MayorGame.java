@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+import Model.MathModel;
 import Utility.QuestionMaker;
 import Utility.Score;
 import View.ViewHandler;
@@ -50,7 +51,7 @@ public class MayorGame {
 
 	private int levelWidth;
 	private int amountofenemies;
-	
+	private MathModel model;
 
 	private boolean dialogEvent = false, running = true;
 
@@ -61,9 +62,9 @@ public class MayorGame {
 	private int width = 1280;
 	private int height = 720;
 
-	public void start(Stage primaryStage, ViewHandler viewhandler) throws Exception {
+	public void start(Stage primaryStage, ViewHandler viewhandler, MathModel model) throws Exception {
 		this.viewhandler = viewhandler;
-
+		this.model = model;
 		initcontent();
 
 		Scene scene = new Scene(appRoot);
@@ -344,7 +345,7 @@ public class MayorGame {
 
 	private void endGame() {
 		running = false;
-		Score score = new Score(10,"Mayor game");
+		Score score = new Score(10,"Mayor game", model);
 		score.setOnCloseRequest(event->{
 			viewhandler.openView("Chapter1");
 		});

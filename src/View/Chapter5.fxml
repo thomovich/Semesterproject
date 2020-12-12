@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter5Controller">
+<AnchorPane prefHeight="436.0" prefWidth="471.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter5Controller">
    <children>
-      <Label layoutX="51.0" layoutY="14.0" text="Spaceinvaders">
+      <Label fx:id="label" alignment="CENTER" layoutX="135.0" layoutY="47.0" prefHeight="45.0" prefWidth="202.0" text="Spaceinvaders" textAlignment="CENTER">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <Label layoutX="27.0" layoutY="78.0" text="Difficulty" />
-      <TextField fx:id="information" layoutX="76.0" layoutY="73.0" onAction="#startGame" prefHeight="26.0" prefWidth="76.0" />
-      <Button layoutX="101.0" layoutY="149.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
-      <Button layoutX="14.0" layoutY="149.0" mnemonicParsing="false" onAction="#frontPage" text="Back" />
+      <Label layoutX="72.0" layoutY="145.0" text="Difficulty" />
+      <Button layoutX="236.0" layoutY="264.0" mnemonicParsing="false" onAction="#startGame" text="Start Game" />
+      <Button layoutX="127.0" layoutY="264.0" mnemonicParsing="false" onAction="#frontPage" text="Back" />
+      <ComboBox fx:id="difficulties" layoutX="172.0" layoutY="140.0" prefHeight="31.0" prefWidth="176.0" promptText="choose difficulty" />
    </children>
 </AnchorPane>
