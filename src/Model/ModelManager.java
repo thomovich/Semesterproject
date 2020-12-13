@@ -1,5 +1,6 @@
     package Model;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -17,7 +18,7 @@ public class ModelManager implements MathModel {
     private int score;
     private int Value;
     private Connection connect;
-    private String studentName="Erik";
+    private String studentName;
     private ArrayList<String> students;
     private int tries;
 
@@ -53,6 +54,56 @@ public class ModelManager implements MathModel {
                 }
     }
     
+    public ObservableList<String> getstudents() {
+    	
+    	 ObservableList<String> data = FXCollections.observableArrayList();
+         
+    	 String sql = "SELECT \"NameId\" FROM public.\"Students\"";
+             try {
+                 connect();
+                 Statement statement = connect.createStatement();
+                 ResultSet rs = statement.executeQuery(sql);
+                 
+                 while (rs.next()){
+                	
+                     data.add(rs.getString(1));
+                             
+                 }
+                 statement.close();
+             }
+             catch (SQLException e) {
+
+                 System.out.println("Error trying to getItems");
+
+                 e.printStackTrace();
+             }
+             
+         return data;
+    }
+    
+    public int countStudents() {
+    	
+       	String sql = "SELECT COUNT(\"NameId\") FROM public.\"Students\"";
+    	int students=0;
+        try {
+            connect();
+            Statement statement = connect.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            
+            while (rs.next()){
+               students= rs.getInt(1);         
+            }
+            statement.close();
+        }
+        catch (SQLException e) {
+
+            System.out.println("Error trying to getItems");
+
+            e.printStackTrace();
+        }
+        return students;
+    	
+    }
     
     public void enterValue(String input) {
         String sql = "INSERT INTO public.testing VALUES('"+input+"');";
@@ -108,8 +159,9 @@ public class ModelManager implements MathModel {
     @Override
     public void setScore(int score,String extraInfo,String game) {
         String sql=null;
-        if(studentPresent("Erik")) {
-        sql = "INSERT INTO public."+game+"(Tries,Student,Score,Question) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        if(studentPresent(studentName)) {
+        	int tries=setTriesChapter5(studentName,game);
+        sql = "INSERT INTO public.\""+game+"\"(Tries,StudentId,Score,Question) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
         }
         try {
             connect();
@@ -134,13 +186,17 @@ public class ModelManager implements MathModel {
     public int setTriesChapter5(String student,String chapter) {
         
         	int tries = getTries(student,chapter);
-            return tries++;
+        	System.out.println(tries);
+        	tries++;
+        	System.out.println(tries);
+            return tries;
         
         
     }
     
     public int getTries(String student,String chapter) {
-    	String sql = "SELECT \"Tries\" FROM public.\""+chapter+"\" WHERE \"StudentID\"=."+student+"' GROUP BY \"Tries\"";
+    	//SELECT Tries FROM public."Chapter5" WHERE "studentId"='Erik' GROUP BY Tries
+    	String sql = "SELECT Tries FROM public.\""+chapter+"\" WHERE studentId='"+student+"' GROUP BY Tries";
     	int tries=0;
         try {
             connect();
@@ -229,7 +285,7 @@ public class ModelManager implements MathModel {
     @Override
     public void setCurrentStudent(String student) {
         this.studentName=student;
-        students.add(student);
+        
         
     }
 

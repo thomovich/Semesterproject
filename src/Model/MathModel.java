@@ -23,6 +23,8 @@ public interface MathModel {
 	public void setCurrentStudent(String student);
 	
 	public boolean correctStudent(String student);
+	
+    public ObservableList<String> getstudents();
 		
 }
 

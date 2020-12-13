@@ -13,10 +13,11 @@ public class Logincontroller {
 	private LoginViewModel loginviewmodel;
 
 	@FXML
-	private ComboBox<String> Usernames;
+	private ComboBox<String> Usernames = new ComboBox<String>();
 
 	@FXML
 	void Loginonaction() {
+		//students();
 	if(Usernames.getValue() == null) {
 	System.out.println("Choose a user");
 	} else {
@@ -25,15 +26,12 @@ public class Logincontroller {
 	}
 	
 	}
-	
-	public void initialize() {
-	Usernames.getItems().addAll("Erik", "Karl", "Jens", "Teacher");
-	}
 
 	public void init(ViewHandler viewHandler, LoginViewModel loginViewModel, Region root) {
 	this.viewhandler = viewHandler;
 	this.loginviewmodel = loginViewModel;
 	this.root = root;
+	Usernames.setItems(loginviewmodel.getStudents());
 	
 	}
 

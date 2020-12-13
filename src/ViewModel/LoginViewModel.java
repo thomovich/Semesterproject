@@ -1,6 +1,7 @@
 package ViewModel;
 
 import Model.MathModel;
+import javafx.collections.ObservableList;
 
 public class LoginViewModel {
 	private MathModel model;
@@ -11,6 +12,10 @@ public class LoginViewModel {
 	
 	public void setUser(String student) {
 		model.setCurrentStudent(student);
+	}
+	
+	public ObservableList<String> getStudents() {
+		return model.getstudents();
 	}
 
 }
