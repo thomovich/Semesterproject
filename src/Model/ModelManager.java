@@ -225,7 +225,7 @@ public class ModelManager implements MathModel {
     public ObservableList<Content> getTable(String student, String chapter) {
         ObservableList<Content> data = FXCollections.observableArrayList();
         if(studentPresent(student)) {
-            String sql = "SELECT * FROM public.\""+chapter+"\";";
+            String sql = "SELECT * FROM public.\""+chapter+"\" WHERE StudentId='"+student+"'";
             try {
                 connect();
                 Statement statement = connect.createStatement();
