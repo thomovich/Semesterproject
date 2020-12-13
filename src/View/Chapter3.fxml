@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #7fff00;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter3Controller">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.Chapter3Controller">
    <children>
-      <Button fx:id="submit1" layoutX="500.0" layoutY="296.0" mnemonicParsing="false" onAction="#startGame" prefHeight="98.0" prefWidth="246.0" style="-fx-background-color: #228b22;" text="START GAME">
+      <Button fx:id="submit1" layoutX="517.0" layoutY="502.0" mnemonicParsing="false" onAction="#startGame" prefHeight="98.0" prefWidth="246.0" style="-fx-background-color: #228b22;" text="START GAME">
          <font>
-            <Font name="Jokerman" size="18.0" />
+            <Font size="18.0" />
          </font>
       </Button>
-      <Label layoutX="445.0" layoutY="42.0" prefHeight="98.0" prefWidth="411.0" text="Math Game For You">
+      <Label alignment="CENTER" layoutX="445.0" layoutY="42.0" prefHeight="98.0" prefWidth="411.0" text="Math Quiz Game">
          <font>
-            <Font name="Jokerman" size="37.0" />
+            <Font size="41.0" />
          </font>
       </Label>
-      <Button layoutX="1058.0" layoutY="644.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Forside">
+      <Button layoutX="985.0" layoutY="530.0" mnemonicParsing="false" onAction="#changeToFrontPage" prefHeight="43.0" prefWidth="144.0" style="-fx-background-color: #228b22;" text="Frontpage">
          <font>
-            <Font name="Jokerman" size="18.0" />
+            <Font size="18.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" layoutX="372.0" layoutY="223.0" prefHeight="153.0" prefWidth="604.0" text="Quiz your way to the top, do you have what it takes to become a master of math" />
    </children>
 </AnchorPane>

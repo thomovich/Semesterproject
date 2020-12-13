@@ -36,7 +36,6 @@ public class OldLadyGame {
 	private ArrayList<Node> booths = new ArrayList<Node>();
 	private Text lasttext;
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
-	private HashMap<MouseButton, Boolean> clicks = new HashMap<MouseButton, Boolean>();
 	private Node currentcar;
 	private VBox vbox;
 	private boolean running = true;
@@ -82,6 +81,8 @@ public class OldLadyGame {
 	createEntity(110*(i+1), 50, 80, 20, Color.BLACK);
 	
 	}
+	
+	
 	
 	appRoot.getChildren().add(gameRoot);
 	}
