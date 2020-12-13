@@ -421,7 +421,7 @@ public class Board extends JPanel {
 		    drawQuestion(g);
 			
 		} else {
-			model.setScore(count, currentQuestion,"\"Chapter5\"");
+			model.setScore(count, currentQuestion,"Chapter5");
 			gameOver(g);
 			
 			//questionProblem=currentQuestion;

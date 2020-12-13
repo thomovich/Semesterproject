@@ -197,6 +197,7 @@ public class ModelManager implements MathModel {
     public int getTries(String student,String chapter) {
     	//SELECT Tries FROM public."Chapter5" WHERE "studentId"='Erik' GROUP BY Tries
     	String sql = "SELECT Tries FROM public.\""+chapter+"\" WHERE studentId='"+student+"' GROUP BY Tries";
+    	System.out.println(sql);
     	int tries=0;
         try {
             connect();
