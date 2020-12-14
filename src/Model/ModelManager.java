@@ -302,7 +302,10 @@ public class ModelManager implements MathModel {
     public ObservableList<Content> getAverageScoreGame(String student,String chapter) {
         ObservableList<Content> data = FXCollections.observableArrayList();
         if(studentPresent(student)) {
-            String sql ="SELECT \"NameId\", AVG(Score) AS Score FROM public.\"Students\" NATURAL JOIN public.\""+chapter+"\" WHERE \"NameId\"='"+student+"' GROUP BY \"NameId\"";
+        	//SELECT StudentId AS Name, AVG(Score) AS Average FROM public."Chapter5" WHERE StudentId='peter' GROUP BY StudentId
+        	
+            String sql ="SELECT StudentId AS Name, AVG(Score) AS Average FROM public.\""+chapter+"\" WHERE StudentId='"+student+"' GROUP BY StudentId";
+            System.out.println(sql);
             try {
                 connect();
                 Statement statement = connect.createStatement();

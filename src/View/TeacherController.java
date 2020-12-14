@@ -22,7 +22,7 @@ public class TeacherController {
     private TeacherViewModel teacher;
     private MathModel model;
     private ObservableList<Content> data2 = FXCollections.observableArrayList();
-    private ObservableList<Content> data ;
+    private ObservableList<Content> data;
 
     @FXML 
     private TextField student;
@@ -43,12 +43,12 @@ public class TeacherController {
         String studentName = student.getText();
         String chapterId = chapter.getText();
         boolean average = averageOption.isSelected();
-        System.out.println(average);
+        
         if(average) {
             studentsSetup();
-             data= model.getAverageScoreGame(studentName,chapterId);
+             data = model.getAverageScoreGame(studentName,chapterId);
             contentTable.setItems(data);
-            System.out.println(data.get(0).avgScore()+data.get(0).getNameId());
+            System.out.println(data.get(0).getAverage()+data.get(0).getName());
         }
         else {
             chapterSetup(chapterId);
@@ -118,8 +118,8 @@ public class TeacherController {
         name.setCellValueFactory(new PropertyValueFactory<>("Name"));             //sets the cell values, so that all rows will be displayed
         contentTable.getColumns().add(name);     
         
-        TableColumn<Content, Integer> avgScore = new TableColumn<Content, Integer>("avg Score");     //creates a new table column with the name temperature in
-        avgScore.setCellValueFactory(new PropertyValueFactory<>("Avg Score"));             //sets the cell values, so that all rows will be displayed
+        TableColumn<Content, Integer> avgScore = new TableColumn<Content, Integer>("Average");     //creates a new table column with the name temperature in
+        avgScore.setCellValueFactory(new PropertyValueFactory<>("Average"));             //sets the cell values, so that all rows will be displayed
         contentTable.getColumns().add(avgScore); 
         
     }

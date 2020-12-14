@@ -7,22 +7,32 @@ public class Content {
     private double score;
     private double avgScore;
     private String question;
-    private String nameId;
+    private String name;
     
     public Content(double tries, String student,double score, String question) {
-        this.tries=tries;
+    	reset();
+    	this.tries=tries;
         this.student=student;
         this.score=score;
         this.question=question;
     }
     
 
-        
-
-    public Content(String nameId,double avgScore) {
-        this.nameId=nameId;
+    public Content(String name,double avgScore) {
+    	reset();
+        this.name=name;
         this.avgScore=avgScore;
 
+    }
+    
+    public void reset() {
+    	this.tries=0;
+        this.student="";
+        this.score=0;
+        this.question="";
+        this.name="";
+        this.avgScore=0;
+        
     }
 
     public double getTries() {
@@ -37,7 +47,7 @@ public class Content {
         return score;
     }
     
-    public double avgScore() {
+    public double getAverage() {
         return avgScore;
     }
 
@@ -45,8 +55,8 @@ public class Content {
         return question;
     }
     
-    public String getNameId() {
-        return nameId;
+    public String getName() {
+        return name;
     }
     
     
