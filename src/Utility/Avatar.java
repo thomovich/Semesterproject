@@ -102,7 +102,7 @@ public class Avatar extends Application {
 	}
 	
 	private void loadHats() {
-		//Test
+		
 	}
 
 }
