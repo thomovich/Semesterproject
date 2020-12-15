@@ -53,7 +53,6 @@ public class TeacherController {
             studentsSetup();
              data = model.getAverageScoreGame(studentName,chapterId);
             contentTable.setItems(data);
-            System.out.println(data.get(0).getAverage()+data.get(0).getName());
         }
         
         else {
@@ -85,12 +84,8 @@ public class TeacherController {
     			noStudent.setText("the student ID has been added");
     		}
     		else {
-    			noStudent.setText(("the student ID is present and therefore not added"));
-    		
-    	}
-    	
-    	
-    	
+    			noStudent.setText(("the student ID is present and therefore not added"));	
+    	}	
     }
     
  

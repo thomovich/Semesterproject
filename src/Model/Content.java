@@ -10,7 +10,7 @@ public class Content {
     private String name;
     
     public Content(double tries, String student,double score, String extra) {
-    	reset();
+    	
     	this.tries=tries;
         this.student=student;
         this.score=score;
@@ -19,7 +19,7 @@ public class Content {
     
     
     public Content(double tries, String student,double score) {
-    	reset();
+    	
     	this.tries=tries;
     	this.student=student;
     	this.score=score;
@@ -27,21 +27,13 @@ public class Content {
     
 
     public Content(String name,double avgScore) {
-    	reset();
+    	
         this.name=name;
         this.avgScore=avgScore;
 
     }
     
-    public void reset() {
-    	this.tries=0;
-        this.student="";
-        this.score=0;
-        this.extra="";
-        this.name="";
-        this.avgScore=0;
-        
-    }
+    
 
     public double getTries() {
         return tries;
