@@ -100,5 +100,9 @@ public class Avatar extends Application {
 		});
 		appRoot.getChildren().add(vbox);
 	}
+	
+	private void loadHats() {
+//		
+	}
 
 }
