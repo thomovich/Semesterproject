@@ -8,21 +8,21 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TeacherController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TeacherController">
    <children>
       <Label layoutX="48.0" layoutY="87.0" text="Select Student" />
-      <TextField fx:id="student" layoutX="151.0" layoutY="83.0" />
+      <TextField fx:id="student" layoutX="151.0" layoutY="83.0" prefHeight="26.0" prefWidth="138.0" />
       <Label layoutX="236.0" layoutY="26.0" text="Teacher Board">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
       <Label layoutX="48.0" layoutY="146.0" text="Select Chapter" />
-      <TextField fx:id="chapter" layoutX="151.0" layoutY="142.0" onAction="#submit" />
-      <Button layoutX="336.0" layoutY="142.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
+      <TextField fx:id="chapter" layoutX="151.0" layoutY="142.0" onAction="#submit" prefHeight="26.0" prefWidth="137.0" />
+      <Button layoutX="349.0" layoutY="142.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
       <TableView fx:id="contentTable" layoutX="84.0" layoutY="186.0" prefHeight="200.0" prefWidth="302.0">
       </TableView>
-      <CheckBox fx:id="averageOption" layoutX="331.0" layoutY="87.0" mnemonicParsing="false" text="Average on Game" />
+      <CheckBox fx:id="averageOption" layoutX="356.0" layoutY="87.0" mnemonicParsing="false" text="Average on Game" />
       <Button layoutX="512.0" layoutY="337.0" mnemonicParsing="false" onAction="#submitStudent" text="Submit" />
       <Label layoutX="448.0" layoutY="189.0" text="Add Student">
          <font>
@@ -31,6 +31,7 @@
       </Label>
       <Label layoutX="420.0" layoutY="247.0" text="Student ID" />
       <TextField fx:id="studentAdd" layoutX="415.0" layoutY="286.0" onAction="#submitStudent" />
+      <Button layoutX="413.0" layoutY="142.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
       <Label fx:id="noStudent" layoutX="410.0" layoutY="363.0" prefHeight="18.0" prefWidth="0.0" textFill="#bf1616" />
    </children>
 </AnchorPane>

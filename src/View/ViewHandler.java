@@ -315,9 +315,7 @@ public class ViewHandler {
 	}
 	
 	public void startSpaceGame(String info) {
-//		startFrontpage();
 		EventQueue.invokeLater(() -> {
-			//model.setTriesChapter5("Erik");
             SpaceInvaders ex = new SpaceInvaders(info,model);
             ex.setVisible(true);
         });

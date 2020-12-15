@@ -160,8 +160,8 @@ public class ModelManager implements MathModel {
     public void setScore(int score,String extraInfo,String game) {
         String sql=null;
         if(studentPresent(studentName)) {
-        	int tries=setTriesChapter5(studentName,game);
-        sql = "INSERT INTO public.\""+game+"\"(Tries,StudentId,Score,Question) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        	int tries=setTries(studentName,game);
+        sql = "INSERT INTO public.\""+game+"\"(Tries,StudentId,Score,"+extraInfo+") VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
         }
         try {
             connect();
@@ -183,7 +183,7 @@ public class ModelManager implements MathModel {
     }
 
     
-    public int setTriesChapter5(String student,String chapter) {
+    public int setTries(String student,String chapter) {
         
         	int tries = getTries(student,chapter);
         	System.out.println(tries);

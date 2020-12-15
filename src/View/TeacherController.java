@@ -39,6 +39,10 @@ public class TeacherController {
 
 
     @FXML
+    public void backToMenu() {
+    	viewhandler.startFrontpage();
+    }
+    @FXML
     public void submit() {    
         String studentName = student.getText();
         String chapterId = chapter.getText();
