@@ -24,7 +24,7 @@ public class Alien extends Sprite {
 
         bomb = new Bomb(x, y);
 
-        String alienImg = "../Images/alien1.jpg";
+        String alienImg = "../Images/alienOrange.png";
         ImageIcon ii = loadImage(alienImg);
 
         setImage(ii.getImage());

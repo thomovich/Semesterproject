@@ -14,7 +14,7 @@ public class Player extends Sprite {
 
     private void initPlayer() {
 
-    	String alienImg = "../Images/spaceship.jpg";
+    	String alienImg = "../Images/spaceshipBlue.jpg";
         ImageIcon ii = loadImage(alienImg);
 
         setImage(ii.getImage());

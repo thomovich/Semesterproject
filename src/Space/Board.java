@@ -31,37 +31,16 @@ public class Board extends JPanel {
 	private Shot shot;
 	private MathModel model;
 	
-	private String problemQuestion;
-	private int randomNumberAnswer;
-	private int randomNumberAnswer1;
-	private int randomNumberAnswer2;
-	private int randomNumberAnswer3;
-	private int randomNumberAnswer4;
-	private int randomNumberAnswer5;
-	private boolean drawRect1=false;
-	private boolean drawRect2=false;
-	private boolean drawRect3=false;
-	private boolean wrongNumber=false;
-	
-	private int randomEntry;
-	private boolean ready=false;
-	private int currentNumber;
-	private String currentAnswer;
 	private String currentQuestion;
-
-	private int jValue = 0;
 
 	int count =0;
 	private int direction;
 	private int speed;
-	private int deaths = 0;
 
 	private boolean inGame = true;
 	private String explImg = "../Images/explosion.jpg";
 	private String message = "Game Over";
-	private ArrayList<String> messages = new ArrayList<String>();
 	private ArrayList<String> answers = new ArrayList<String>();
-	private ArrayList<String> answersTaken = new ArrayList<String>();
 	//random positioning
 	private ArrayList<Integer> firstRowPositions = new ArrayList<Integer>();
 	private ArrayList<Integer> secondRowPositions = new ArrayList<Integer>();
@@ -73,8 +52,6 @@ public class Board extends JPanel {
 	private ArrayList<String> thirdRowAnswers = new ArrayList<String>();
 	private ArrayList<String> fourthRowAnswers = new ArrayList<String>();
 	
-	private ArrayList<Integer> numbers = new ArrayList<Integer>();
-	private ArrayList<Integer> numberAnswers = new ArrayList<Integer>();
 	
 	private int randomNumber;
 	private int randomNumber2;
@@ -231,7 +208,7 @@ public class Board extends JPanel {
 				if(aliens.get(j).getColumnPosition()==100) {//checks for the column positions in the firstRow to find the 1 in 6 position that it does not have and paint an alien
 					
 					if (aliens.get(j).isVisible()) {
-					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX(), aliens.get(j).getY(), this);//
+					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX()+4, aliens.get(j).getY()-5, this);//
 					}
 					if (aliens.get(j).isDying()) {
 
@@ -262,7 +239,7 @@ public class Board extends JPanel {
 			if(aliens.get(j).getRowPosition()==2) {//6-13
 				if(aliens.get(j).getColumnPosition()==100) {//checks for the column positions in the firstRow to find the 1 in 6 position that it does not have and paint an alien
 					if (aliens.get(j).isVisible()) {
-					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX(), aliens.get(j).getY(), this);//
+					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX()+4, aliens.get(j).getY()-5, this);//
 					}
 					if (aliens.get(j).isDying()) {
 
@@ -295,7 +272,7 @@ public class Board extends JPanel {
 			if(aliens.get(j).getRowPosition()==3) {//if the alien is in the first row we take from the firstRow arraylist 
 				if(aliens.get(j).getColumnPosition()==100) {//checks for the column positions in the firstRow to find the 1 in 6 position that it does not have and paint an alien
 					if (aliens.get(j).isVisible()) {
-					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX(), aliens.get(j).getY(), this);//
+					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX()+4, aliens.get(j).getY()-5, this);//
 					}
 					if (aliens.get(j).isDying()) {
 
@@ -315,7 +292,7 @@ public class Board extends JPanel {
 							
 							aliens.get(j).unSetBomb();
 						}
-						g.drawString(answers.get((thirdRowPositions.get(j-10))+12),aliens.get(j).getX() + 7, aliens.get(j).getY() + 13);
+						g.drawString(answers.get((thirdRowPositions.get(j-10))+12),aliens.get(j).getX()+ 7, aliens.get(j).getY() + 13);
 					}
 					
 					
@@ -327,7 +304,7 @@ public class Board extends JPanel {
 			if(aliens.get(j).getRowPosition()==4) {//if the alien is in the first row we take from the firstRow arraylist 
 				if(aliens.get(j).getColumnPosition()==100) {//checks for the column positions in the firstRow to find the 1 in 6 position that it does not have and paint an alien
 					if (aliens.get(j).isVisible()) {
-					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX(), aliens.get(j).getY(), this);//
+					g.drawImage(aliens.get(j).getImage(), aliens.get(j).getX()+4, aliens.get(j).getY()-5, this);//
 					}
 					if (aliens.get(j).isDying()) {
 
@@ -589,7 +566,6 @@ public class Board extends JPanel {
 							shot.setImage(ii.getImage());
 							
 							alien.setDying(true);
-							deaths++;
 							shot.die();
 						} else {//it is a number
 							if(alien.getQuestion().equals(currentQuestion)) {//is the aliens question the same as the current one
