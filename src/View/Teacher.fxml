@@ -8,7 +8,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TeacherController">
+=======
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="671.0" prefWidth="1157.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="View.TeacherController">
+>>>>>>> 07c9334 Teacher size
    <children>
       <Label layoutX="48.0" layoutY="87.0" text="Select Student" />
       <TextField fx:id="student" layoutX="151.0" layoutY="83.0" prefHeight="26.0" prefWidth="138.0" />
@@ -22,7 +26,11 @@
       <Button layoutX="349.0" layoutY="142.0" mnemonicParsing="false" onAction="#submit" text="Submit" />
       <TableView fx:id="contentTable" layoutX="84.0" layoutY="186.0" prefHeight="200.0" prefWidth="302.0">
       </TableView>
+<<<<<<< Upstream, based on branch 'main' of https://github.com/thomovich/Semesterproject
       <CheckBox fx:id="averageOption" layoutX="356.0" layoutY="87.0" mnemonicParsing="false" text="Average on Game" />
+=======
+      <CheckBox fx:id="averageOption" layoutX="375.0" layoutY="87.0" mnemonicParsing="false" text="Average on Game" />
+>>>>>>> 07c9334 Teacher size
       <Button layoutX="512.0" layoutY="337.0" mnemonicParsing="false" onAction="#submitStudent" text="Submit" />
       <Label layoutX="448.0" layoutY="189.0" text="Add Student">
          <font>
