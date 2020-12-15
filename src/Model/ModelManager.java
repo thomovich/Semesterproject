@@ -157,11 +157,21 @@ public class ModelManager implements MathModel {
     }
 
     @Override
-    public void setScore(int score,String extraInfo,String game) {
+    public void setScore(int score,String extraInfo,String chapter) {
         String sql=null;
         if(studentPresent(studentName)) {
-        	int tries=setTries(studentName,game);
-        sql = "INSERT INTO public.\""+game+"\"(Tries,StudentId,Score,"+extraInfo+") VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        	int tries=setTries(studentName,chapter);
+        	if(chapter.equals("Chapter1")) {
+        		 sql = "INSERT INTO public.\""+chapter+"\"(Tries,StudentId,Score,Game) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        	}
+        	else if(!(chapter.equals("Chapter1"))&& !(chapter.equals("Chapter5"))) {
+        		sql = "INSERT INTO public.\""+chapter+"\"(Tries,StudentId,Score) VALUES('"+tries+"','"+studentName+"','"+score+"');";
+        	}
+        	else {
+        		System.out.println("printing chapter5");
+        		sql = "INSERT INTO public.\""+chapter+"\"(Tries,StudentId,Score,Question) VALUES('"+tries+"','"+studentName+"','"+score+"','"+extraInfo+"');";
+        	}
+        
         }
         try {
             connect();
@@ -226,15 +236,20 @@ public class ModelManager implements MathModel {
         ObservableList<Content> data = FXCollections.observableArrayList();
         if(studentPresent(student)) {
             String sql = "SELECT * FROM public.\""+chapter+"\" WHERE StudentId='"+student+"'";
+            System.out.println(sql);
             try {
                 connect();
                 Statement statement = connect.createStatement();
                 ResultSet rs = statement.executeQuery(sql);
-                
+                if(chapter.equals("Chapter5") || chapter.equals("Chapter1")) {
                 while (rs.next()){
-                    data.add(new Content(rs.getInt(1), rs.getString(2),rs.getDouble(3), rs.getString(4)));
-                    
-                            
+                    data.add(new Content(rs.getInt(1), rs.getString(2),rs.getDouble(3), rs.getString(4)));          
+                }
+                }
+                else {
+                	while (rs.next()){
+                	data.add(new Content(rs.getInt(1), rs.getString(2),rs.getDouble(3))); 
+                	}
                 }
                 statement.close();
             }

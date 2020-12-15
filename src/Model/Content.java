@@ -6,15 +6,23 @@ public class Content {
     private String student;
     private double score;
     private double avgScore;
-    private String question;
+    private String extra;
     private String name;
     
-    public Content(double tries, String student,double score, String question) {
+    public Content(double tries, String student,double score, String extra) {
     	reset();
     	this.tries=tries;
         this.student=student;
         this.score=score;
-        this.question=question;
+        this.extra=extra;
+    }
+    
+    
+    public Content(double tries, String student,double score) {
+    	reset();
+    	this.tries=tries;
+    	this.student=student;
+    	this.score=score;
     }
     
 
@@ -29,7 +37,7 @@ public class Content {
     	this.tries=0;
         this.student="";
         this.score=0;
-        this.question="";
+        this.extra="";
         this.name="";
         this.avgScore=0;
         
@@ -51,8 +59,8 @@ public class Content {
         return avgScore;
     }
 
-    public String getQuestion() {
-        return question;
+    public String getExtra() {
+        return extra;
     }
     
     public String getName() {

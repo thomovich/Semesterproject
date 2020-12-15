@@ -47,6 +47,7 @@ public class TeacherController {
         String studentName = student.getText();
         String chapterId = chapter.getText();
         boolean average = averageOption.isSelected();
+        System.out.println(chapterId);
         
         if(average) {
             studentsSetup();
@@ -54,8 +55,20 @@ public class TeacherController {
             contentTable.setItems(data);
             System.out.println(data.get(0).getAverage()+data.get(0).getName());
         }
+        
         else {
-            chapterSetup(chapterId);
+        	
+        	if(chapterId.equals("Chapter5")) {
+            chapterSetup5();
+        	}
+        	
+        	else if(chapterId.equals("Chapter1")) {
+        		chapterSetup1();
+        	}
+        	else if(chapterId.equals("Chapter2") ||chapterId.equals("Chapter3")||chapterId.equals("Chapter4")) {
+        		chapterSetupRest();
+        		
+        	}
              data= model.getTable(studentName, chapterId);
              contentTable.setItems(data);
         }
@@ -90,7 +103,7 @@ public class TeacherController {
         this.teacher = teacher;
     }
     
-    public void chapterSetup(String chapter) {
+    public void chapterSetup5() {
 
         contentTable.getColumns().clear();
             
@@ -109,10 +122,53 @@ public class TeacherController {
         
         
         TableColumn<Content, String> question= new TableColumn<Content, String>("Question");     //creates a new table column with the name temperature in
-        question.setCellValueFactory(new PropertyValueFactory<>("Question"));             //sets the cell values, so that all rows will be displayed
+        question.setCellValueFactory(new PropertyValueFactory<>("Extra"));             //sets the cell values, so that all rows will be displayed
         contentTable.getColumns().add(question); 
         
     }
+    
+    public void chapterSetup1() {
+
+        contentTable.getColumns().clear();
+            
+        TableColumn<Content, Integer> tries= new TableColumn<Content, Integer>("Tries");     //creates a new table column with the name temperature in
+        tries.setCellValueFactory(new PropertyValueFactory<>("Tries"));             //sets the cell values, so that all rows will be displayed
+        contentTable.getColumns().add(tries);     
+        
+        TableColumn<Content, String> student = new TableColumn<Content, String>("Student");     //creates a new table column with the name temperature in
+        student.setCellValueFactory(new PropertyValueFactory<>("Student"));             //sets the cell values, so that all rows will be displayed
+        contentTable.getColumns().add(student); 
+            
+        
+        TableColumn<Content, Integer> score= new TableColumn<Content, Integer>("Score");     //creates a new table column with the name temperature in
+        score.setCellValueFactory(new PropertyValueFactory<>("Score"));             //sets the cell values, so that all rows will be displayed
+        contentTable.getColumns().add(score);     
+        
+        
+        TableColumn<Content, String> game= new TableColumn<Content, String>("Game");     //creates a new table column with the name temperature in
+        game.setCellValueFactory(new PropertyValueFactory<>("Extra"));             //sets the cell values, so that all rows will be displayed
+        contentTable.getColumns().add(game); 
+        
+    }
+    
+   
+		public void chapterSetupRest() {
+			 contentTable.getColumns().clear();
+	            
+		        TableColumn<Content, Integer> tries= new TableColumn<Content, Integer>("Tries");     //creates a new table column with the name temperature in
+		        tries.setCellValueFactory(new PropertyValueFactory<>("Tries"));             //sets the cell values, so that all rows will be displayed
+		        contentTable.getColumns().add(tries);     
+		        
+		        TableColumn<Content, String> student = new TableColumn<Content, String>("Student");     //creates a new table column with the name temperature in
+		        student.setCellValueFactory(new PropertyValueFactory<>("Student"));             //sets the cell values, so that all rows will be displayed
+		        contentTable.getColumns().add(student); 
+		            
+		        
+		        TableColumn<Content, Integer> score= new TableColumn<Content, Integer>("Score");     //creates a new table column with the name temperature in
+		        score.setCellValueFactory(new PropertyValueFactory<>("Score"));             //sets the cell values, so that all rows will be displayed
+		        contentTable.getColumns().add(score); 
+		}
+	
     
     public void studentsSetup() {
         

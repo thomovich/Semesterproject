@@ -399,6 +399,10 @@ public class Board extends JPanel {
 			
 		} else {
 			model.setScore(count, currentQuestion,"Chapter5");
+			model.setScore(5, "mayor game", "Chapter1");
+			model.setScore(12, null, "Chapter2");
+			model.setScore(17, null, "Chapter3");
+			model.setScore(3, null, "Chapter4");
 			gameOver(g);
 			
 			//questionProblem=currentQuestion;
