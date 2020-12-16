@@ -88,6 +88,7 @@ public class AdditionGame {
 			public void handle(long now) {
 				if (running) {
 					Movement();
+					moveYaxis();
 				}
 
 				if (dialogEvent) {
@@ -129,11 +130,11 @@ public class AdditionGame {
 
 	private void Movement() {
 
-		if (isPressed(KeyCode.RIGHT)) {
+		if (isPressed(KeyCode.RIGHT) && car.getTranslateX()+ 40 <=1240) {
 			moveXaxis(7);
 		}
 
-		if (isPressed(KeyCode.LEFT)) {
+		if (isPressed(KeyCode.LEFT)&& car.getTranslateX() >=5) {
 			moveXaxis(-7);
 		}
 
@@ -143,6 +144,7 @@ public class AdditionGame {
 
 		}
 
+		//Checker kollision med træer
 		for (Node trees : trees) {
 			if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
 				trees.getProperties().put("alive", false);
@@ -151,11 +153,8 @@ public class AdditionGame {
 			}
 		}
 
-		for (Node trees : trees) {
-			if (running = true) {
-				moveYaxis(1);
-			}
-		}
+	
+			
 
 		for (Iterator<ImageView> it = trees.iterator(); it.hasNext();) {
 			Node trees = it.next();
@@ -170,35 +169,19 @@ public class AdditionGame {
 	}
 
 	private void moveXaxis(int value) {
-		boolean moving = value > 0;
+		boolean movingRight = value > 0;
 		for (int i = 0; i < Math.abs(value); i++) {
-			for (Node trees : trees) {
-				if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
-					if (moving) {
-						if (car.getTranslateX() + 40 == trees.getTranslateX()) {
-							return;
+			car.setTranslateX(car.getTranslateX() + (movingRight ? 1 : -1));
 
-						}
-					} else {
-						if (car.getTranslateX() == trees.getTranslateX() + 60) {
-							return;
-						}
-					}
-				}
-			}
-			car.setTranslateX(car.getTranslateX() + (moving ? 1 : -1));
 		}
 	}
 
-	private void moveYaxis(int value) {
-		boolean moving = value > 0;
-		for (int i = 0; i < Math.abs(value); i++) {
+	private void moveYaxis() {
 			for (Node trees : trees) {
 				if (running = true) {
-					trees.setTranslateY(trees.getTranslateY() + (moving ? 1 : -0.1));
+					trees.setTranslateY(trees.getTranslateY() +0.05);
 				}
 			}
-		}
 	}
 
 	private boolean isPressed(KeyCode key) {
@@ -227,7 +210,6 @@ public class AdditionGame {
 		appRoot.getChildren().addAll(vbox);
 
 	}
-
 
 	private ImageView createImageEntity(int x, int y, int w, int h, Image image) {
 		ImageView trees = new ImageView();
