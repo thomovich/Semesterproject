@@ -283,9 +283,9 @@ public class ViewHandler {
 		front.start(primaryStage, this);
 	}
 
-	public void startAdditiongame() throws Exception {
+	public void startAdditiongame(String car) throws Exception {
 		AdditionGame addition = new AdditionGame();
-		addition.start(primaryStage, this);
+		addition.start(primaryStage, this, car);
 
 	}
 

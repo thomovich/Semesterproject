@@ -1,43 +1,60 @@
 package Gamestarter;
 
-import java.awt.Dimension;
 import java.util.ArrayList;
+
 import java.util.HashMap;
+
 import java.util.Iterator;
-import java.util.Random;
 
 import View.ViewHandler;
+
 import javafx.animation.AnimationTimer;
-import javafx.animation.PauseTransition;
+
 import javafx.geometry.Insets;
-import javafx.geometry.Point2D;
+
 import javafx.scene.Node;
+
 import javafx.scene.Scene;
+
 import javafx.scene.control.Button;
+
 import javafx.scene.control.Label;
+
 import javafx.scene.control.TextField;
+
 import javafx.scene.image.Image;
+
 import javafx.scene.image.ImageView;
+
 import javafx.scene.input.KeyCode;
+
 import javafx.scene.layout.Background;
+
 import javafx.scene.layout.BackgroundFill;
+
 import javafx.scene.layout.CornerRadii;
+
 import javafx.scene.layout.Pane;
+
 import javafx.scene.layout.VBox;
+
 import javafx.scene.paint.Color;
+
 import javafx.scene.paint.ImagePattern;
+
 import javafx.scene.shape.Rectangle;
+
 import javafx.scene.text.Font;
+
 import javafx.scene.text.Text;
+
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class AdditionGame {
-	private static int delayTimer;
-	private static int IndexObsticle;
-	private static int IndexObsticleOld;
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
 	private ArrayList<Node> trees = new ArrayList<Node>();
+	private ArrayList<ImageView> goldcoins = new ArrayList<ImageView>();
+	private ArrayList<Node> rocks = new ArrayList<Node>();
 	private Node car;
 	private VBox vbox;
 	private Pane appRoot = new Pane();
@@ -45,22 +62,18 @@ public class AdditionGame {
 	private Pane uiRoot = new Pane();
 	private boolean dialogEvent = false, running = true;
 	private ViewHandler viewhandler;
-	private Point2D playerVelocity = new Point2D(0, 0);
+	private String car1;
 	private int levelWidth;
 	Label text = new Label();
-
-	Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-	private int halfwidth = (int) (screenSize.getWidth() / 2);
-	private int width = (int) (screenSize.getWidth());
-	private int height = (int) (screenSize.getHeight());
-//	private Node label;
+	private int halfwidth = 640;
+	private int width = 1280;
+	private int height = 720;
 	private VBox box;
 
-	public void start(Stage primaryStage, ViewHandler viewhandler) throws Exception {
+	public void start(Stage primaryStage, ViewHandler viewhandler, String car1) throws Exception {
 		this.viewhandler = viewhandler;
-
+		this.car1 = car1;
 		initcontent();
-
 		Scene scene = new Scene(appRoot);
 		scene.setOnKeyPressed(event -> keys.put(event.getCode(), true));
 		scene.setOnKeyReleased(event -> keys.put(event.getCode(), false));
@@ -76,16 +89,17 @@ public class AdditionGame {
 				if (running) {
 					Movement();
 				}
+
 				if (dialogEvent) {
 					dialogEvent = false;
 					keys.keySet().forEach(key -> keys.put(key, false));
-
 					initMathProblem();
+
 				}
 			}
-
 		};
 		timer.start();
+
 	}
 
 	protected void initMathProblem() {
@@ -94,51 +108,39 @@ public class AdditionGame {
 		TextField fieldAnswer = new TextField();
 		Text Answer = new Text(problems.getAnswer());
 		Answer.setVisible(false);
-		Text correct = new Text();
-		correct.setVisible(false);
 		Button btnSubmit = new Button("Submit");
 		btnSubmit.setOnAction(event -> {
 			if (Answer.getText().equals(fieldAnswer.getText())) {
 				Answer.setVisible(true);
-
-				correct.setText("Your answer is correct. Congrats bro!");
-				correct.setVisible(true);
-
-				appRoot.getChildren().add(correct);
-
-				try {
-
-					Thread.sleep(3000);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
 				dialogEvent = false;
 				running = true;
 				appRoot.getChildren().remove(box);
-
 			}
+
 		});
-		box = new VBox(10, question, fieldAnswer, btnSubmit, Answer, correct);
+
+		box = new VBox(10, question, fieldAnswer, btnSubmit, Answer);
 		box.setBackground(new Background(new BackgroundFill(Color.GAINSBORO, CornerRadii.EMPTY, Insets.EMPTY)));
 		box.setTranslateX(650);
 		box.setTranslateY(450);
 		appRoot.getChildren().addAll(box);
+
 	}
 
 	private void Movement() {
-		if (isPressed(KeyCode.RIGHT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			moveright(7);
-			car.setScaleX(1);
+
+		if (isPressed(KeyCode.RIGHT)) {
+			moveXaxis(7);
 		}
-		if (isPressed(KeyCode.LEFT) && car.getTranslateX() + 40 <= levelWidth - 5) {
-			moveleft(7);
-			car.setScaleX(-1);
+
+		if (isPressed(KeyCode.LEFT)) {
+			moveXaxis(-7);
 		}
 
 		if (isPressed(KeyCode.P)) {
 			initMainmenu();
 			running = false;
+
 		}
 
 		for (Node trees : trees) {
@@ -149,24 +151,33 @@ public class AdditionGame {
 			}
 		}
 
+		for (Node trees : trees) {
+			if (running = true) {
+				moveYaxis(1);
+			}
+		}
+
 		for (Iterator<Node> it = trees.iterator(); it.hasNext();) {
 			Node trees = it.next();
 			if (!(Boolean) trees.getProperties().get("alive")) {
 				it.remove();
 				gameRoot.getChildren().remove(trees);
+
 			}
+
 		}
 
 	}
 
-	private void moveright(int value) {
-		boolean movingRight = value > 0;
+	private void moveXaxis(int value) {
+		boolean moving = value > 0;
 		for (int i = 0; i < Math.abs(value); i++) {
 			for (Node trees : trees) {
 				if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
-					if (movingRight) {
+					if (moving) {
 						if (car.getTranslateX() + 40 == trees.getTranslateX()) {
 							return;
+
 						}
 					} else {
 						if (car.getTranslateX() == trees.getTranslateX() + 60) {
@@ -175,30 +186,19 @@ public class AdditionGame {
 					}
 				}
 			}
-			car.setTranslateX(car.getTranslateX() + (movingRight ? 1 : -1));
+			car.setTranslateX(car.getTranslateX() + (moving ? 1 : -1));
 		}
-
 	}
 
-	private void moveleft(int value) {
-		boolean movingLeft = value < 0;
+	private void moveYaxis(int value) {
+		boolean moving = value > 0;
 		for (int i = 0; i < Math.abs(value); i++) {
 			for (Node trees : trees) {
-				if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
-					if (movingLeft) {
-						if (car.getTranslateX() + 40 == trees.getTranslateX()) {
-							return;
-						}
-					} else {
-						if (car.getTranslateX() == trees.getTranslateX() + 60) {
-							return;
-						}
-					}
+				if (running = true) {
+					trees.setTranslateY(trees.getTranslateY() + (moving ? 1 : -0.1));
 				}
 			}
-			car.setTranslateX(car.getTranslateX() + (movingLeft ? 1 : -1));
 		}
-
 	}
 
 	private boolean isPressed(KeyCode key) {
@@ -210,17 +210,14 @@ public class AdditionGame {
 	}
 
 	private void initMainmenu() {
-
 		Font font = Font.font(32);
-
 		Button btnResume = new Button("Resume Game");
 		btnResume.setOnAction(event -> {
 			running = true;
 			appRoot.getChildren().remove(vbox);
-
 		});
-		btnResume.setFont(font);
 
+		btnResume.setFont(font);
 		Button mainMenu = new Button("Main Menu");
 		mainMenu.setOnAction(event -> MainMenu());
 		mainMenu.setFont(font);
@@ -228,13 +225,9 @@ public class AdditionGame {
 		vbox.setTranslateX(400);
 		vbox.setTranslateY(400);
 		appRoot.getChildren().addAll(vbox);
+
 	}
 
-//	private void timer() {
-//		PauseTransition text = new PauseTransition(Duration.seconds(8));
-//		text.setOnFinished(event -> label.setVisible(false));
-//		text.play();
-//	}
 
 	private ImageView createImageEntity(int x, int y, int w, int h, Image image) {
 		ImageView trees = new ImageView();
@@ -247,20 +240,36 @@ public class AdditionGame {
 		trees.setAccessibleText("Right");
 		gameRoot.getChildren().add(trees);
 		return trees;
+
 	}
-	
 
 	private void initcontent() {
+		levelWidth = map.level1[0].length() * 32;
 		Rectangle background = new Rectangle(width, height);
 		background.setFill(new ImagePattern(new Image("/Images/landscape.png")));
-		levelWidth = map.level1[0].length() * width / 32;
-					Image tree = new Image("/Images/tree.png");
-					ImageView obsticle = createImageEntity(  60, 60, 40, 70, tree);
-					trees.add(obsticle);
-					//Her skal der laves en generator til at spawne træer
+		for (int i = 0; i < map.level1.length; i++) {
+			String line = map.level1[i];
+			for (int j = 0; j < line.length(); j++) {
+				int random = (int) (Math.random() * 4);
+				if (random == 1) {
+					Image Trees = new Image("/Images/tree.png");
+					Node Tree = createImageEntity(j * 32, i * 32, 32, 32, Trees);
+					trees.add(Tree);
+				} else if (random == 2) {
+					Image Goldcoin = new Image("/Images/goldcoin.png");
+					ImageView coin = createImageEntity(j * 32, i * 32, 20, 35, Goldcoin);
+					goldcoins.add(coin);
+				} else if (random == 3) {
+					Image Rock = new Image("/Images/rock.png");
+					ImageView rock = createImageEntity(j * 32, i * 32, 20, 35, Rock);
+					rocks.add(rock);
+				} else {
 
+				}
+			}
+		}
 
-		Image image = new Image("/Images/car1.png");
+		Image image = new Image(car1);
 		car = createImageEntity(0, 600, 40, 40, image);
 		car.translateXProperty().addListener((obs, old, newValue) -> {
 			int offset = newValue.intValue();
@@ -270,6 +279,7 @@ public class AdditionGame {
 		});
 
 		appRoot.getChildren().addAll(background, gameRoot, uiRoot);
+
 	}
 
 }
