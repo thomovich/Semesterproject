@@ -52,9 +52,9 @@ import javafx.stage.Stage;
 
 public class AdditionGame {
 	private HashMap<KeyCode, Boolean> keys = new HashMap<KeyCode, Boolean>();
-	private ArrayList<Node> trees = new ArrayList<Node>();
+	private ArrayList<ImageView> trees = new ArrayList<ImageView>();
 	private ArrayList<ImageView> goldcoins = new ArrayList<ImageView>();
-	private ArrayList<Node> rocks = new ArrayList<Node>();
+	private ArrayList<ImageView> rocks = new ArrayList<ImageView>();
 	private Node car;
 	private VBox vbox;
 	private Pane appRoot = new Pane();
@@ -157,7 +157,7 @@ public class AdditionGame {
 			}
 		}
 
-		for (Iterator<Node> it = trees.iterator(); it.hasNext();) {
+		for (Iterator<ImageView> it = trees.iterator(); it.hasNext();) {
 			Node trees = it.next();
 			if (!(Boolean) trees.getProperties().get("alive")) {
 				it.remove();
@@ -253,7 +253,7 @@ public class AdditionGame {
 				int random = (int) (Math.random() * 4);
 				if (random == 1) {
 					Image Trees = new Image("/Images/tree.png");
-					Node Tree = createImageEntity(j * 32, i * 32, 32, 32, Trees);
+					ImageView Tree = createImageEntity(j * 32, i * 32, 32, 32, Trees);
 					trees.add(Tree);
 				} else if (random == 2) {
 					Image Goldcoin = new Image("/Images/goldcoin.png");
