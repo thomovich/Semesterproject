@@ -35,11 +35,11 @@ public class Chapter4Controller {
 
 	@FXML
 	void car1() throws Exception {
-		viewhandler.startAdditiongame("car1.png");
+		viewhandler.startAdditiongame("/Images/car1.png");
 	}
 
 	@FXML
 	void car2() throws Exception {
-		viewhandler.startAdditiongame("car2.png");
+		viewhandler.startAdditiongame("/Images/car2.png");
 	}
 }
