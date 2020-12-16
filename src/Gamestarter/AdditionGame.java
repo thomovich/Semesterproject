@@ -69,11 +69,14 @@ public class AdditionGame {
 	private int width = 1280;
 	private int height = 720;
 	private VBox box;
+	private double  lastTimerCall = System.nanoTime();
 
+// Start method with relevant methods fx. initcontent, which defines the background etc., spawner which spawns different nodes at random places....
 	public void start(Stage primaryStage, ViewHandler viewhandler, String car1) throws Exception {
 		this.viewhandler = viewhandler;
 		this.car1 = car1;
 		initcontent();
+		spawner();
 		Scene scene = new Scene(appRoot);
 		scene.setOnKeyPressed(event -> keys.put(event.getCode(), true));
 		scene.setOnKeyReleased(event -> keys.put(event.getCode(), false));
@@ -84,11 +87,16 @@ public class AdditionGame {
 		primaryStage.centerOnScreen();
 		primaryStage.show();
 
+// The animationTimer gets the nodes to move down, gets the player to move to avoid nodes etc.
 		AnimationTimer timer = new AnimationTimer() {
 			public void handle(long now) {
 				if (running) {
 					Movement();
 					moveYaxis();
+					if(now>lastTimerCall+4_000_000_000l) {
+						spawner();
+						lastTimerCall=now;
+					}
 				}
 
 				if (dialogEvent) {
@@ -102,7 +110,7 @@ public class AdditionGame {
 		timer.start();
 
 	}
-
+// Getting the math problems from the AdditionQuestions class, for every time a player colludes with a node
 	protected void initMathProblem() {
 		AdditionQuestions problems = new AdditionQuestions();
 		Text question = new Text(problems.createproblem());
@@ -127,14 +135,15 @@ public class AdditionGame {
 		appRoot.getChildren().addAll(box);
 
 	}
-
+//movement method which lets the player move around using right and left. Also the pause function.
+//Also checking if the player is colluding with different nodes.
 	private void Movement() {
 
-		if (isPressed(KeyCode.RIGHT) && car.getTranslateX()+ 40 <=1240) {
+		if (isPressed(KeyCode.RIGHT) && car.getTranslateX() + 40 <= 1240) {
 			moveXaxis(7);
 		}
 
-		if (isPressed(KeyCode.LEFT)&& car.getTranslateX() >=5) {
+		if (isPressed(KeyCode.LEFT) && car.getTranslateX() >= 5) {
 			moveXaxis(-7);
 		}
 
@@ -144,17 +153,17 @@ public class AdditionGame {
 
 		}
 
-		//Checker kollision med træer
+		// Checker kollision med trï¿½er
 		for (Node trees : trees) {
 			if (car.getBoundsInParent().intersects(trees.getBoundsInParent())) {
 				trees.getProperties().put("alive", false);
 				dialogEvent = true;
 				running = false;
 			}
+			if (trees.getTranslateY() > 640) {
+				trees.getProperties().put("alive", false);
+			}
 		}
-
-	
-			
 
 		for (Iterator<ImageView> it = trees.iterator(); it.hasNext();) {
 			Node trees = it.next();
@@ -166,8 +175,47 @@ public class AdditionGame {
 
 		}
 
-	}
+		for (Node rocks : rocks) {
+			if (car.getBoundsInParent().intersects(rocks.getBoundsInParent())) {
+				rocks.getProperties().put("alive", false);
+				dialogEvent = true;
+				running = false;
+			}
+			if (rocks.getTranslateY() > 640) {
+				rocks.getProperties().put("alive", false);
+			}
+		}
 
+		for (Iterator<ImageView> it = rocks.iterator(); it.hasNext();) {
+			Node rocks = it.next();
+			if (!(Boolean) rocks.getProperties().get("alive")) {
+				it.remove();
+				gameRoot.getChildren().remove(rocks);
+			}
+		}
+
+		for (Node goldcoins : goldcoins) {
+			if (car.getBoundsInParent().intersects(goldcoins.getBoundsInParent())) {
+				goldcoins.getProperties().put("alive", false);
+				dialogEvent = true;
+				running = false;
+			}
+			if (goldcoins.getTranslateY() > 640) {
+				goldcoins.getProperties().put("alive", false);
+			}
+		}
+
+		for (Iterator<ImageView> it = goldcoins.iterator(); it.hasNext();) {
+			Node goldcoins = it.next();
+			if (!(Boolean) goldcoins.getProperties().get("alive")) {
+				it.remove();
+				gameRoot.getChildren().remove(goldcoins);
+
+			}
+
+		}
+	}
+// Letting the car move around the landscape
 	private void moveXaxis(int value) {
 		boolean movingRight = value > 0;
 		for (int i = 0; i < Math.abs(value); i++) {
@@ -175,15 +223,20 @@ public class AdditionGame {
 
 		}
 	}
-
+// Gets all the nodes to move down with different speed
 	private void moveYaxis() {
-			for (Node trees : trees) {
-				if (running = true) {
-					trees.setTranslateY(trees.getTranslateY() +0.05);
-				}
-			}
-	}
+		for (Node trees : trees) {
+			trees.setTranslateY(trees.getTranslateY() + Math.random() * 2);
 
+		}
+		for (Node rocks : rocks) {
+			rocks.setTranslateY(rocks.getTranslateY() + Math.random() * 2);
+		}
+		for (Node goldcoins : goldcoins) {
+			goldcoins.setTranslateY(goldcoins.getTranslateY() + Math.random() * 3);
+		}
+	}
+// tells the system if any key is pressed
 	private boolean isPressed(KeyCode key) {
 		return keys.getOrDefault(key, false);
 	}
@@ -191,7 +244,7 @@ public class AdditionGame {
 	private void MainMenu() {
 		viewhandler.openView("Chapter4");
 	}
-
+//Open up a box, which let the user go back to main menu or resume game (pause button)
 	private void initMainmenu() {
 		Font font = Font.font(32);
 		Button btnResume = new Button("Resume Game");
@@ -210,7 +263,7 @@ public class AdditionGame {
 		appRoot.getChildren().addAll(vbox);
 
 	}
-
+//Defining the ImageView
 	private ImageView createImageEntity(int x, int y, int w, int h, Image image) {
 		ImageView trees = new ImageView();
 		trees.setFitHeight(h);
@@ -224,11 +277,9 @@ public class AdditionGame {
 		return trees;
 
 	}
-
-	private void initcontent() {
-		levelWidth = map.level1[0].length() * 32;
-		Rectangle background = new Rectangle(width, height);
-		background.setFill(new ImagePattern(new Image("/Images/landscape.png")));
+// A spawner of both Trees, Rocks and goldcoins. 
+// Together with the animationTimer, this spawns all three with different locations.
+	public void spawner() {
 		for (int i = 0; i < map.level1.length; i++) {
 			String line = map.level1[i];
 			for (int j = 0; j < line.length(); j++) {
@@ -250,6 +301,12 @@ public class AdditionGame {
 				}
 			}
 		}
+	}
+// Defining the size of the game, background etc.
+	private void initcontent() {
+		levelWidth = map.level1[0].length() * 32;
+		Rectangle background = new Rectangle(width, height);
+		background.setFill(new ImagePattern(new Image("/Images/landscape.png")));
 
 		Image image = new Image(car1);
 		car = createImageEntity(0, 600, 40, 40, image);
