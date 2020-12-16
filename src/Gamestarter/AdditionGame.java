@@ -272,7 +272,6 @@ public class AdditionGame {
 		trees.setTranslateX(x);
 		trees.setTranslateY(y);
 		trees.getProperties().put("alive", true);
-		trees.setAccessibleText("Right");
 		gameRoot.getChildren().add(trees);
 		return trees;
 

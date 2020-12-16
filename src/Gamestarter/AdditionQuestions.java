@@ -12,8 +12,8 @@ public class AdditionQuestions {
 
 	public String createproblem() {
 		String question;
-		firstNumber = (int) (Math.random() + 15) + 1;
-		secondNumber = (int) (Math.random() + 15) + 1;
+		firstNumber = (int) (Math.random() * 15) + 1;
+		secondNumber = (int) (Math.random() * 15) + 1;
 
 		answer = firstNumber + secondNumber;
 		question = "What is: " + answer + " + " + secondNumber;
