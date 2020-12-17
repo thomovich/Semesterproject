@@ -29,7 +29,7 @@ public class Avatar extends Application {
 	private ImageView lefthand;
 	
 	
-	Item item = new Item("head_helmet", new Image("/Images/duck-png-8.png"));
+	
 	List<Item>Items = new ArrayList<>();
 	List<ImageView>inventory = new ArrayList<>();
 	FlowPane flow = new FlowPane();
@@ -43,7 +43,15 @@ public class Avatar extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		initcontent();
-		Items.add(item);
+		for(int i = 1; i < 3; i++) {
+			Item item = new Item("head_helmet", new Image("/Images/hat-"+ i +".png"));
+			Items.add(item);
+		}
+		for(int i = 1; i< 3; i++) {
+			Item item = new Item("feet_shoe", new Image("/Images/shoe-"+i+".png"));
+			Items.add(item);
+		}
+		
 		
 
 		
