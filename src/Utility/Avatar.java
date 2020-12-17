@@ -17,9 +17,10 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 import java.util.List;
 
+import View.ViewHandler;
 import javafx.application.Application;
 
-public class Avatar extends Application {
+public class Avatar {
 	private Pane avatarRoot = new Pane();
 	private Pane appRoot = new Pane();
 	private ImageView hat;
@@ -27,6 +28,8 @@ public class Avatar extends Application {
 	private ImageView leftshoe;
 	private ImageView righthand;
 	private ImageView lefthand;
+	private Button backtomain = new Button("Main menu");
+	private ViewHandler viewhandler;
 	
 	
 	
@@ -35,13 +38,10 @@ public class Avatar extends Application {
 	FlowPane flow = new FlowPane();
 	private ImageView currentNode;
 
-	public static void main(String[] args) {
-		Application.launch(Avatar.class);
 
-	}
 
-	@Override
-	public void start(Stage primaryStage) throws Exception {
+
+	public void start(Stage primaryStage, ViewHandler viewhandler){
 		initcontent();
 		for(int i = 1; i < 3; i++) {
 			Item item = new Item("head_helmet", new Image("/Images/hat-"+ i +".png"));
@@ -58,6 +58,8 @@ public class Avatar extends Application {
 		
 
 		Scene scene = new Scene(appRoot);
+		appRoot.getChildren().add(backtomain);
+		backtomain.setOnAction(event -> viewhandler.startFrontpage());
 		primaryStage.setScene(scene);
 
 		primaryStage.show();

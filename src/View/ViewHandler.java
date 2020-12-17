@@ -18,6 +18,7 @@ import Gamestarter.DuckGame;
 
 import Gamestarter.MayorGame;
 import Space.SpaceInvaders;
+import Utility.Avatar;
 import Gamestarter.OldLadyGame;
 
 
@@ -325,6 +326,11 @@ public class ViewHandler {
 	public void startOldLadyGame() {
 		OldLadyGame oldlady = new OldLadyGame();
 		oldlady.Start(primaryStage, this);
+	}
+	
+	public void openAvatar() throws Exception {
+	Avatar avatar = new Avatar();
+	avatar.start(primaryStage, this);
 	}
 	
 	private Region loadSpaceGame(String fxmlFile) {

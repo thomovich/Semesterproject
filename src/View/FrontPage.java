@@ -35,7 +35,7 @@ public class FrontPage {
             new Pair<String, Runnable>("Chapter 4", () -> {openview("Chapter4");}),
             new Pair<String, Runnable>("Chapter 5", () -> {openview("Chapter5");}),
             new Pair<String, Runnable>("Teacher", () -> {openview("Chapter6");}),
-            new Pair<String, Runnable>("Credits", () -> {}),
+            new Pair<String, Runnable>("Avatar", () -> {openview("Avatar");}),
             new Pair<String, Runnable>("Exit to Desktop", Platform::exit)
     );
     
@@ -198,6 +198,14 @@ public class FrontPage {
     		break;
     	case "Chapter6":
     		viewhandler.openView("Chapter6");
+    		break;
+    	case "Avatar":
+    		try {
+				viewhandler.openAvatar();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+    		break;
     	}
     	
     }

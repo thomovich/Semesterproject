@@ -12,7 +12,6 @@ public class ViewModelFactory {
 	 private Chapter1ViewModel chapter1viewModel;
 	 private Chapter2ViewModel chapter2viewModel;
 	 private Chapter3ViewModel chapter3viewModel;
-	 private ChaptersViewModel chaptersviewModel;
 	 private MayorGameViewModel MayorGameViewModel;
 	 private Chapter4ViewModel chapter4viewModel;
 	 private DuckGameViewModel duckgameviewModel;
@@ -27,7 +26,6 @@ public class ViewModelFactory {
 
 	 public ViewModelFactory (MathModel model) {
 		 frontPageViewModel = new FrontPageViewModel(model);
-		 chaptersviewModel = new ChaptersViewModel(model);
 		 chapter1viewModel = new Chapter1ViewModel(model);
 		 chapter2viewModel = new Chapter2ViewModel(model);
 		 chapter3viewModel = new Chapter3ViewModel(model);
@@ -52,10 +50,6 @@ public class ViewModelFactory {
 	 public FrontPageViewModel getFrontPageViewModel() {
 			
 			return frontPageViewModel;
-		}
-	 public ChaptersViewModel getChaptersViewModel() {
-			
-			return chaptersviewModel;
 		}
 	 
 	 public Chapter1ViewModel getChapter1ViewModel() {
