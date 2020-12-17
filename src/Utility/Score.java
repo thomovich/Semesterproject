@@ -19,6 +19,7 @@ public Score(int score, String game,MathModel model) {
 	Score.setText("Your score is: "+score);
 	btnOK.setOnAction(event->{
 		Score.setText("score submitted");
+		model.setScore(score, game, "Chapter1");
 	});
 	VBox vbox = new VBox(10,Score,btnOK);
 	vbox.setAlignment(Pos.CENTER);

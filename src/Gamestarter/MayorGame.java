@@ -346,8 +346,10 @@ public class MayorGame {
 	private void endGame() {
 		running = false;
 		Score score = new Score(10,"Mayor game", model);
+		
 		score.setOnCloseRequest(event->{
 			viewhandler.openView("Chapter1");
+			
 		});
 		
 	}
